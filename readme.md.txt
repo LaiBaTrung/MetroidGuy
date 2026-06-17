@@ -1,0 +1,1 @@
+--*Early state of a game*--
