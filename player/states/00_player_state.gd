@@ -4,9 +4,13 @@ class_name PlayerState
 
 var player: Player
 var next_state: PlayerState
-
-#region /// stats referencs
-# reference to all states
+ 
+#region /// states referencs
+@onready var idle: PlayerStateIdle = %Idle
+@onready var run: PlayerStateRun = %Run
+@onready var fall: PlayerStateFall = %Fall
+@onready var jump: PlayerStateJump = %Jump
+@onready var crouch: PlayerStateCrouch = %Crouch
 #endregion
 
 

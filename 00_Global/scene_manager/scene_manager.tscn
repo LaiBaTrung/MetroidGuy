@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ceg47as2m6ckl"]
+
+[ext_resource type="Script" uid="uid://m2fkcm2upr5p" path="res://00_Global/scene_manager/scene_manager.gd" id="1_eqps3"]
+
+[sub_resource type="Gradient" id="Gradient_eqps3"]
+offsets = PackedFloat32Array(0.333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0add4"]
+gradient = SubResource("Gradient_eqps3")
+width = 1500
+height = 780
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="SceneManager" type="CanvasLayer" unique_id=1763486666]
+process_mode = 3
+script = ExtResource("1_eqps3")
+
+[node name="Fade" type="Control" parent="." unique_id=317811346]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Fade" unique_id=1469889766]
+modulate = Color(0.04528158, 0.09488666, 0.028972235, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0add4")

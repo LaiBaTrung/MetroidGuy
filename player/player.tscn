@@ -3,28 +3,182 @@
 [ext_resource type="Script" uid="uid://dds3ntrlideir" path="res://player/scripts/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://dyhrllc1xsyof" path="res://player/states/Idle.gd" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://h0kc0li5bobm" path="res://player/states/Run.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://ou7x22ditmr4" path="res://player/states/Fall.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://3m66yql477i6" path="res://player/states/Jump.gd" id="5_g6k8r"]
+[ext_resource type="Script" uid="uid://p33xlg27qw18" path="res://player/states/Crouch.gd" id="6_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://dhhq62bap4ite" path="res://player/sprites/hero.png" id="7_boad6"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
-size = Vector2(18, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
+radius = 8.0
+height = 46.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oul6g"]
-size = Vector2(18, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
+radius = 8.0
 
-[node name="Player" type="CharacterBody2D" unique_id=186652215]
-position = Vector2(0, -24)
+[sub_resource type="Animation" id="Animation_boad6"]
+resource_name = "Crouch"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_rgyib"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hg6s5"]
+resource_name = "Jump"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6, 0.79999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28]
+}
+
+[sub_resource type="Animation" id="Animation_8t03j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2ieo8"]
+resource_name = "Run"
+length = 0.8
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [14, 15, 16, 17, 18, 19, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebec5"]
+_data = {
+&"Crouch": SubResource("Animation_boad6"),
+&"Idle": SubResource("Animation_rgyib"),
+&"Jump": SubResource("Animation_hg6s5"),
+&"RESET": SubResource("Animation_8t03j"),
+&"Run": SubResource("Animation_2ieo8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boad6"]
+size = Vector2(20, 3)
+
+[node name="Player" type="CharacterBody2D" unique_id=186652215 groups=["Player"]]
+z_index = 1
+collision_layer = 16
+collision_mask = 3
+floor_constant_speed = true
+floor_snap_length = 2.5
 script = ExtResource("1_oul6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217855563]
-texture = SubResource("PlaceholderTexture2D_kqu6x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692520328]
-shape = SubResource("RectangleShape2D_oul6g")
-debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
 
 [node name="States" type="Node" parent="." unique_id=884054080]
 
 [node name="Idle" type="Node" parent="States" unique_id=1614843285]
+unique_name_in_owner = true
 script = ExtResource("2_rkbax")
 
 [node name="Run" type="Node" parent="States" unique_id=300741823]
+unique_name_in_owner = true
 script = ExtResource("3_g1dw6")
+
+[node name="Fall" type="Node" parent="States" unique_id=1258537491]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+coyote_time = 0.1
+
+[node name="Jump" type="Node" parent="States" unique_id=285677434]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
+
+[node name="Crouch" type="Node" parent="States" unique_id=2132553695]
+unique_name_in_owner = true
+script = ExtResource("6_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217855563]
+texture_filter = 1
+position = Vector2(0, -39)
+texture = ExtResource("7_boad6")
+hframes = 16
+vframes = 4
+
+[node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1692520328]
+visible = false
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_boad6")
+debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
+
+[node name="CollisionCrouch" type="CollisionShape2D" parent="." unique_id=95299796]
+visible = false
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_rgyib")
+disabled = true
+debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
+
+[node name="Label" type="Label" parent="." unique_id=135877827]
+offset_left = -38.0
+offset_top = -76.0
+offset_right = 38.0
+offset_bottom = -53.0
+theme_override_font_sizes/font_size = 12
+text = "Nick ga"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1820387015]
+libraries/ = SubResource("AnimationLibrary_ebec5")
+
+[node name="one_way_platform_Shapecast" type="ShapeCast2D" parent="." unique_id=919013856]
+visible = false
+enabled = false
+shape = SubResource("RectangleShape2D_boad6")
+target_position = Vector2(0, 6)
+max_results = 12
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1033520481]
+process_mode = 3
+position = Vector2(0, -38)

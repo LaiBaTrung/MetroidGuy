@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dwjayvisjl5xx"]
+
+[ext_resource type="Script" uid="uid://dds3ntrlideir" path="res://player/scripts/player.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://dyhrllc1xsyof" path="res://player/states/Idle.gd" id="2_rkbax"]
+[ext_resource type="Script" uid="uid://h0kc0li5bobm" path="res://player/states/Run.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://ou7x22ditmr4" path="res://player/states/Fall.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://3m66yql477i6" path="res://player/states/Jump.gd" id="5_g6k8r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kqu6x"]
+size = Vector2(18, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oul6g"]
+size = Vector2(18, 48)
+
+[node name="Player" type="CharacterBody2D" unique_id=186652215]
+position = Vector2(0, -24)
+script = ExtResource("1_oul6g")
+
+[node name="States" type="Node" parent="." unique_id=884054080]
+
+[node name="Idle" type="Node" parent="States" unique_id=1614843285]
+unique_name_in_owner = true
+script = ExtResource("2_rkbax")
+
+[node name="Run" type="Node" parent="States" unique_id=300741823]
+unique_name_in_owner = true
+script = ExtResource("3_g1dw6")
+
+[node name="Fall" type="Node" parent="States" unique_id=1258537491]
+unique_name_in_owner = true
+script = ExtResource("4_qjkh3")
+
+[node name="Jump" type="Node" parent="States" unique_id=285677434]
+unique_name_in_owner = true
+script = ExtResource("5_g6k8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217855563]
+texture = SubResource("PlaceholderTexture2D_kqu6x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692520328]
+shape = SubResource("RectangleShape2D_oul6g")
+debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
+
+[node name="Label" type="Label" parent="." unique_id=135877827]
+offset_left = -38.0
+offset_top = -47.0
+offset_right = 38.0
+offset_bottom = -24.0
+theme_override_font_sizes/font_size = 12
+text = "Label"
+horizontal_alignment = 1
