@@ -1,5 +1,4 @@
 - This is a small project about a metroidvania type game
-***Contain****
 - Player movements using state machine
 - World building using builit-in engine stuffs
 - Level transition, Camera bounds, audio bus which auto trigger when a level started 
