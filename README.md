@@ -1,10 +1,11 @@
 - This is a small project about a metroidvania type game
-- contain:
-- Player movement using state machine
-- world building using builit-in engine stuffs
+***Contain****
+- Player movements using state machine
+- World building using builit-in engine stuffs
 - Level transition, Camera bounds, audio bus which auto trigger when a level started 
-- Player ability: Attack, dash, roll, double jump,... (in development)
+- Player abilities: Attack, dash, roll, double jump,... (in development)
 - Enemies type: Walk, fly
 - Enemies can meele, shoot
-- Enemy can detect player using sensor
-- Boss fight
+- Enemy can detect player using sensor (not sure)
+- Boss fight ()
+- Bonus: Improve performance, ...
