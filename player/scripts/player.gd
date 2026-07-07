@@ -27,6 +27,22 @@ var previous_state: PlayerState :
 	
 #endregion
 
+#region /// player stats
+var hp : float  = 20:
+	set( value ):
+		hp = clampf(value, 0, max_hp)
+		Messages.player_health_changed.emit( hp, max_hp )
+		
+var max_hp : float = 20:
+	set ( value ):
+		max_hp = value
+		Messages.player_health_changed.emit( hp, max_hp )
+var dash : bool = false
+var double_jump : bool = false
+var ground_slam : bool = false
+var morph_roll  : bool = false
+#endregion
+
 #region /// standard variables
 var direction :  Vector2 = Vector2.ZERO
 var gravity : float = 980
@@ -39,10 +55,35 @@ func _ready() -> void:
 		self.queue_free()
 	initialize_states()
 	self.call_deferred("reparent", get_tree().root )
+	Messages.player_healed.connect( _on_player_healed )
+	Messages.back_to_title_screen.connect( queue_free )
 	pass
 	
 	
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed( "action" ):
+		Messages.player_interacted.emit( self )
+	elif event.is_action_pressed("pause"):
+		get_tree().paused = true
+		var pause_menu : PauseMenu = load( "res://paused_menu/paused_menu.tscn" ).instantiate()  
+		add_child( pause_menu )
+		return
+		
+	# get rid later
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_MINUS:
+			if Input.is_key_pressed(KEY_SHIFT):
+				max_hp -= 10 
+			else: 
+				hp -= 2
+		elif event.keycode == KEY_EQUAL:
+			if Input.is_key_pressed(KEY_SHIFT):
+				max_hp += 10 
+			else: 
+				hp += 2
+		
+	# end get rid later
+	
 	change_state( current_state.handle_inputs(event) )
 	pass
 
@@ -118,4 +159,10 @@ func add_debug_indicator( color : Color = Color.RED ) -> void:
 	d.modulate = color
 	await get_tree().create_timer( 3 ).timeout
 	d.queue_free()
+	pass
+	
+	
+func _on_player_healed (amount : float)-> void:
+	hp += amount
+	#audio/visual
 	pass

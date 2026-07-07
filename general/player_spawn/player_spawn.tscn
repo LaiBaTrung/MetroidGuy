@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dtwggfes4k3t1"]
+
+[ext_resource type="Texture2D" uid="uid://dhhq62bap4ite" path="res://player/sprites/hero.png" id="1_2y6re"]
+[ext_resource type="Script" uid="uid://ddjxjt0nxiciu" path="res://general/player_spawn/player_spawn.gd" id="1_h1cw5"]
+
+[node name="PlayerSpawn" type="Node2D" unique_id=450844790]
+script = ExtResource("1_h1cw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=608333922]
+modulate = Color(0.5058824, 1, 0.3254902, 1)
+z_index = 100
+texture_filter = 1
+position = Vector2(0, -40)
+texture = ExtResource("1_2y6re")
+hframes = 16
+vframes = 4

@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://ccckjpr4mv60j"]
+
+[ext_resource type="Script" uid="uid://bo248w3a21rvk" path="res://general/save_points/save_point.gd" id="1_3yslq"]
+[ext_resource type="Texture2D" uid="uid://dlc1teehko5yd" path="res://general/save_points/save_point.png" id="1_bhmqj"]
+[ext_resource type="FontFile" uid="uid://bc2gh1dhqhgha" path="res://general/fonts/alagard.ttf" id="2_wqd8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqd8s"]
+size = Vector2(46, 62)
+
+[sub_resource type="Gradient" id="Gradient_wqd8s"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3yslq"]
+gradient = SubResource("Gradient_wqd8s")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3yslq"]
+font = ExtResource("2_wqd8s")
+font_color = Color(0.72623205, 0.72227687, 0.72227687, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_wqd8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-59, -20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3yslq"]
+resource_name = "game_saved"
+length = 3.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 2.5, 3),
+"transitions": PackedFloat32Array(-2, 1, 1, 0.5, -2),
+"update": 0,
+"values": [Vector2(-59, -8), Vector2(-59, -20), Vector2(-59, -16), Vector2(-59, -16), Vector2(-59, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4091866, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fq8c"]
+_data = {
+&"RESET": SubResource("Animation_wqd8s"),
+&"game_saved": SubResource("Animation_3yslq")
+}
+
+[node name="save_point" type="Node2D" unique_id=425616926]
+script = ExtResource("1_3yslq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=554394570]
+texture_filter = 1
+position = Vector2(0, -28)
+texture = ExtResource("1_bhmqj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1735292711]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=727290300]
+position = Vector2(0, -31)
+shape = SubResource("RectangleShape2D_wqd8s")
+debug_color = Color(0.7019608, 0, 0.48235294, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1677859150]
+color = Color(1, 0.48947757, 0.69724834, 1)
+texture = SubResource("GradientTexture2D_3yslq")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=293300580]
+position = Vector2(0, -59)
+
+[node name="Label" type="Label" parent="Node2D" unique_id=1957651722]
+visible = false
+offset_left = -59.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 3.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+text = "Game Saved"
+label_settings = SubResource("LabelSettings_3yslq")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=2116879955]
+libraries/ = SubResource("AnimationLibrary_2fq8c")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=282230554]
+offset_right = 40.0
+offset_bottom = 40.0

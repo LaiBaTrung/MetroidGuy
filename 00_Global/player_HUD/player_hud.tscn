@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bdvhiqeqgao2"]
+
+[ext_resource type="Script" uid="uid://c3or2lbsoo2ot" path="res://00_Global/player_HUD/player_hud.gd" id="1_46dm3"]
+[ext_resource type="Texture2D" uid="uid://dkwtndfj5x2tw" path="res://00_Global/player_HUD/health_bar_frame.png" id="1_iho37"]
+
+[sub_resource type="Gradient" id="Gradient_ojjha"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_iho37"]
+gradient = SubResource("Gradient_ojjha")
+height = 18
+
+[sub_resource type="Gradient" id="Gradient_iho37"]
+colors = PackedColorArray(0.8627451, 0.34117648, 0.34117648, 1, 0.84724, 0.5395152, 0.5395152, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_46dm3"]
+gradient = SubResource("Gradient_iho37")
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=58636428]
+process_mode = 3
+layer = 2
+script = ExtResource("1_46dm3")
+
+[node name="Control" type="Control" parent="." unique_id=143414864]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HPMarginContainer" type="MarginContainer" parent="Control" unique_id=1678571945]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 11.0
+offset_right = 51.0
+offset_bottom = 31.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/HPMarginContainer" unique_id=1693470552]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_iho37")
+region_rect = Rect2(0, 0, 40, 20)
+patch_margin_left = 27
+patch_margin_right = 7
+axis_stretch_horizontal = 1
+
+[node name="HPBar" type="TextureProgressBar" parent="Control/HPMarginContainer/NinePatchRect" unique_id=540864780]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 4.0
+offset_right = -3.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 50.0
+rounded = true
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_iho37")
+texture_progress = SubResource("GradientTexture2D_46dm3")

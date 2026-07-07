@@ -4,7 +4,7 @@ extends Node2D
 class_name LevelBounds
 
 @export_range( 480, 2048, 32, "suffix:px" ) var width : int = 480 : set = _on_width_changed
-@export_range( 270, 2048, 32, "suffix:px" ) var height : int = 270 : set = _on_height_changed
+@export_range( 250, 2048, 32, "suffix:px" ) var height : int = 250 : set = _on_height_changed
 
 
 func _ready() -> void:
