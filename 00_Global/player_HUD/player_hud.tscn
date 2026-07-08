@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c3or2lbsoo2ot" path="res://00_Global/player_HUD/player_hud.gd" id="1_46dm3"]
 [ext_resource type="Texture2D" uid="uid://dkwtndfj5x2tw" path="res://00_Global/player_HUD/health_bar_frame.png" id="1_iho37"]
+[ext_resource type="Script" uid="uid://duby0j4nnl0i7" path="res://00_Global/player_HUD/button.gd" id="3_w28bm"]
+[ext_resource type="Resource" uid="uid://btwa2rohighvc" path="res://00_Global/visual_effects/hit_particles_setting/hit_magic_blue.tres" id="4_sx6tt"]
 
 [sub_resource type="Gradient" id="Gradient_ojjha"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -64,3 +66,16 @@ rounded = true
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_iho37")
 texture_progress = SubResource("GradientTexture2D_46dm3")
+
+[node name="Button" type="Button" parent="." unique_id=318404599]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -92.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 39.0
+grow_horizontal = 0
+text = "Test particles"
+script = ExtResource("3_w28bm")
+particles_settings = ExtResource("4_sx6tt")
