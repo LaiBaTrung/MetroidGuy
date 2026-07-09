@@ -9,6 +9,7 @@ const JUMP_DEBUG_INDICATOR = preload("uid://ru5hkhcvor6j")
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
 @onready var one_way_platform_shapecast: ShapeCast2D = $one_way_platform_Shapecast
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var attack_area: AttackArea = %AttackArea
 #endregion
 
 #region /// export variables
@@ -70,6 +71,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 		
 	# get rid later
+	if event.is_action_pressed("attack"):
+		attack_area.activate()
+		return
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_MINUS:
 			if Input.is_key_pressed(KEY_SHIFT):
@@ -145,6 +149,7 @@ func update_direction() -> void:
 	direction = Vector2( x_axis, y_axis )
 	
 	if prev_direction.x != direction.x:
+		attack_area.flip( direction.x )
 		if direction.x < 0:
 			sprite.flip_h = true
 		elif direction.x > 0:

@@ -28,6 +28,7 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
+		Audio.ui_cancel()
 		get_viewport().set_input_as_handled()
 		get_tree().paused = false
 		queue_free()
@@ -39,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 func show_pause_screen() -> void:
+	Audio.ui_select()
 	paused_screen.visible = true
 	system.visible = false
 	pass

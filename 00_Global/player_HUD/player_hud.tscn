@@ -37,7 +37,7 @@ custom_minimum_size = Vector2(40, 20)
 layout_mode = 0
 offset_left = 11.0
 offset_top = 11.0
-offset_right = 51.0
+offset_right = 117.0
 offset_bottom = 31.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/HPMarginContainer" unique_id=1693470552]

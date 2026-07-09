@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MetroidGuy"
-run/main_scene="uid://cdws5n7clorow"
+run/main_scene="uid://r432kmtahtq7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=100
 config/icon="uid://dlensa8cw3sqg"
@@ -119,6 +119,9 @@ pause={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="One way Platform"
 2d_physics/layer_5="Player"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="Breakable"
+2d_physics/layer_8="SlamBreakable"
 
 [physics]
 
