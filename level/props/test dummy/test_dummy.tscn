@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bjsftnxacrflm"]
+
+[ext_resource type="Script" uid="uid://dt5qggkaahc4u" path="res://level/props/test dummy/test_dummy.gd" id="1_gcc8i"]
+[ext_resource type="Script" uid="uid://d31rvs73g1gs3" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="2_5cv0x"]
+[ext_resource type="Script" uid="uid://bioualrksl3e5" path="res://general/scripts/damage_area.gd" id="2_de7hk"]
+[ext_resource type="Resource" uid="uid://d08cveykvnhto" path="res://00_Global/visual_effects/hit_particles_setting/hit_wood_small.tres" id="3_5cv0x"]
+[ext_resource type="Texture2D" uid="uid://snojfe7mhybh" path="res://general/sprites/props_destructible.png" id="3_85ogr"]
+[ext_resource type="AudioStream" uid="uid://dp3uxbrqv4mdv" path="res://general/audio/Hentai_moan.mp3" id="6_quo2p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de7hk"]
+atlas = ExtResource("3_85ogr")
+region = Rect2(17, 10, 14, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85ogr"]
+atlas = ExtResource("3_85ogr")
+region = Rect2(16, 51, 16, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cv0x"]
+size = Vector2(14, 30)
+
+[sub_resource type="LabelSettings" id="LabelSettings_quo2p"]
+font_size = 11
+
+[node name="TestDummy" type="Node2D" unique_id=932704577]
+script = ExtResource("1_gcc8i")
+particles = Array[ExtResource("2_5cv0x")]([ExtResource("3_5cv0x")])
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=700567985]
+texture_filter = 1
+position = Vector2(0, -9)
+texture = SubResource("AtlasTexture_de7hk")
+offset = Vector2(0, -19)
+
+[node name="BaseSprite" type="Sprite2D" parent="." unique_id=580349350]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = SubResource("AtlasTexture_85ogr")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=741609010]
+collision_layer = 96
+collision_mask = 0
+script = ExtResource("2_de7hk")
+audio = ExtResource("6_quo2p")
+metadata/_custom_type_script = "uid://bioualrksl3e5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=292083025]
+position = Vector2(0, -33)
+shape = SubResource("RectangleShape2D_5cv0x")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Label" type="Label" parent="." unique_id=1918812829]
+offset_left = -28.0
+offset_top = -59.0
+offset_right = 67.0
+offset_bottom = -44.0
+text = "Long Chubby"
+label_settings = SubResource("LabelSettings_quo2p")
