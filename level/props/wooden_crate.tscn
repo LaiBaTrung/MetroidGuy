@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://x2t4umakotoa"]
+
+[ext_resource type="Script" uid="uid://cbbxlny1sshk1" path="res://general/scripts/breakable.gd" id="1_6shej"]
+[ext_resource type="Script" uid="uid://d31rvs73g1gs3" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="2_l7iej"]
+[ext_resource type="Resource" uid="uid://cbaxccrjliqds" path="res://00_Global/visual_effects/hit_particles_setting/hit_wood_medium.tres" id="3_2j71n"]
+[ext_resource type="Resource" uid="uid://d08cveykvnhto" path="res://00_Global/visual_effects/hit_particles_setting/hit_wood_small.tres" id="4_g2d7o"]
+[ext_resource type="Resource" uid="uid://ydqj6bls83sk" path="res://00_Global/visual_effects/hit_particles_setting/hit_wood_large.tres" id="5_lbgfb"]
+[ext_resource type="Script" uid="uid://bioualrksl3e5" path="res://general/scripts/damage_area.gd" id="6_lkq45"]
+[ext_resource type="Texture2D" uid="uid://snojfe7mhybh" path="res://general/sprites/props_destructible.png" id="7_0qh4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mas3v"]
+size = Vector2(39, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrf0w"]
+atlas = ExtResource("7_0qh4b")
+region = Rect2(53, 28, 39, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6shej"]
+size = Vector2(37, 30)
+
+[node name="Wooden_crate" type="Node2D" unique_id=1432231622]
+script = ExtResource("1_6shej")
+hit_particles = Array[ExtResource("2_l7iej")]([ExtResource("3_2j71n")])
+destroy_particles = Array[ExtResource("2_l7iej")]([ExtResource("3_2j71n"), ExtResource("4_g2d7o"), ExtResource("5_lbgfb")])
+metadata/_custom_type_script = "uid://cbbxlny1sshk1"
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=708572822]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("6_lkq45")
+metadata/_custom_type_script = "uid://bioualrksl3e5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=1405978093]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_mas3v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1331164831]
+texture_filter = 1
+position = Vector2(-19, -16)
+texture = SubResource("AtlasTexture_hrf0w")
+centered = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2046031770]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1402454948]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_6shej")
