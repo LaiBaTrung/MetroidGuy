@@ -11,6 +11,8 @@ func enter() -> void:
 	player.animation_player.play("Crouch")
 	player.collision_stand.disabled = true	
 	player.collision_crouch.disabled = false
+	player.da_stand.disabled = true	
+	player.da_crouch.disabled = false
 	pass
 	
 	
@@ -18,11 +20,15 @@ func enter() -> void:
 func exit() -> void:
 	player.collision_stand.disabled = false	
 	player.collision_crouch.disabled = true
+	player.da_stand.disabled = false	
+	player.da_crouch.disabled = true
 	pass 
 	
 	
 # handle what happens when an input is pressed 
 func handle_inputs( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "attack" ):
+		return attack
 	if _event.is_action_pressed( "Jump" ):
 		player.one_way_platform_shapecast.force_shapecast_update()
 		if player.one_way_platform_shapecast.is_colliding():
