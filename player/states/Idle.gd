@@ -1,6 +1,8 @@
 extends PlayerState
 class_name PlayerStateIdle
 
+
+
 func init() -> void:
 	pass
 	
@@ -8,6 +10,7 @@ func init() -> void:
 # what happens when enter this state
 func enter() -> void:
 	player.animation_player.play( "Idle" )
+	player.jump_count = 0
 	pass
 	
 	
@@ -18,6 +21,8 @@ func exit() -> void:
 	
 # handle what happens when an input is pressed 
 func handle_inputs( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "attack" ):
+		return attack
 	if _event.is_action_pressed( "Jump" ):
 		return jump
 	return null
