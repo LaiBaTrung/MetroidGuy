@@ -433,7 +433,7 @@ visibility_rect = Rect2(-500, -100, 1000, 200)
 process_material = SubResource("ParticleProcessMaterial_dvgh2")
 
 [node name="PlayerSpawn" parent="." unique_id=450844790 instance=ExtResource("8_5bo58")]
-position = Vector2(146, 191)
+position = Vector2(612, 245)
 
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=1533118618]
 script = ExtResource("9_6r5np")
