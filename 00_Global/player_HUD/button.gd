@@ -7,6 +7,6 @@ func _ready() -> void:
 	pass
 	
 func _on_pressed() -> void:
-	var pos : Vector2 = get_tree().get_first_node_in_group( "Player" ).global_position
-	VisualEffects.hit_particales( pos, Vector2(0, -1 ), particles_settings )
+	#var player : Player = get_tree().get_first_node_in_group("Player")
+	#player.double_jump = !player.double_jump
 	pass
