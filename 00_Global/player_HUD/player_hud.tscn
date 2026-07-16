@@ -37,7 +37,7 @@ custom_minimum_size = Vector2(40, 20)
 layout_mode = 0
 offset_left = 11.0
 offset_top = 11.0
-offset_right = 117.0
+offset_right = 51.0
 offset_bottom = 31.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control/HPMarginContainer" unique_id=1693470552]
@@ -61,21 +61,84 @@ offset_right = -3.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+value = 100.0
 rounded = true
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_iho37")
 texture_progress = SubResource("GradientTexture2D_46dm3")
 
-[node name="Button" type="Button" parent="." unique_id=318404599]
+[node name="Button" type="Button" parent="Control" unique_id=318404599]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -92.0
+offset_left = -124.0
 offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 39.0
 grow_horizontal = 0
-text = "Test particles"
+text = "Toggle D"
 script = ExtResource("3_w28bm")
 particles_settings = ExtResource("4_sx6tt")
+
+[node name="GameOver" type="Control" parent="Control" unique_id=2054197328]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/GameOver" unique_id=791326284]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7254902)
+
+[node name="Label" type="Label" parent="Control/GameOver" unique_id=292110012]
+modulate = Color(0.47843137, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -36.0
+offset_right = 38.5
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/GameOver" unique_id=1974020359]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = 10.0
+offset_right = 152.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=430049354]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Load last save"
+
+[node name="QuitButton" type="Button" parent="Control/GameOver/HBoxContainer" unique_id=447602689]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Quit to title"
