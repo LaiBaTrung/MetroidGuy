@@ -5,7 +5,7 @@ extends EnemyState
 @export var chase_speed : float = 100
 
 func enter() -> void:
-	enemy.play_animation( animation_name if animation_name else "chase" )
+	enemy.play_animation( animation_name if animation_name else "walk" )
 	pass
 	
 func re_enter() -> void:

@@ -124,20 +124,6 @@ script = ExtResource("19_2mgqq")
 item = "uid://cf16fvcyd0rpu"
 metadata/_custom_type_script = "uid://fsecfqmf62v6"
 
-[sub_resource type="GDScript" id="GDScript_vpnvx"]
-script/source = "extends Label
-
-@onready var player_sensor: PlayerSensor = $\"../PlayerSensor\"
-@onready var living_armor: Enemy = $\"..\"
-
-
-func _physics_process(_delta: float) -> void:
-	text = \"\"
-	text = \"target = \"
-	text += living_armor.blackboard.target.name if living_armor.blackboard.target else \"\"
-	pass
-"
-
 [node name="Slime2" type="CharacterBody2D" unique_id=1082561769]
 collision_layer = 0
 collision_mask = 3
@@ -239,10 +225,3 @@ metadata/_custom_type_script = "uid://bkantsi643sij"
 script = ExtResource("18_7lkcl")
 items = Array[ExtResource("19_2mgqq")]([SubResource("Resource_jp5mc")])
 metadata/_custom_type_script = "uid://580pq5e8kcat"
-
-[node name="Label" type="Label" parent="." unique_id=634523366]
-offset_left = -27.0
-offset_top = -61.0
-offset_right = 13.0
-offset_bottom = -46.0
-script = SubResource("GDScript_vpnvx")

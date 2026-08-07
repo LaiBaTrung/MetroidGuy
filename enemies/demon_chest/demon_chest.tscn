@@ -216,6 +216,20 @@ metadata/_custom_type_script = "uid://fsecfqmf62v6"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjt4y"]
 size = Vector2(42, 29)
 
+[sub_resource type="GDScript" id="GDScript_55dq8"]
+script/source = "extends Label
+
+@onready var player_sensor: PlayerSensor = $\"../PlayerSensor\"
+@onready var living_armor: Enemy = $\"..\"
+
+
+func _physics_process(_delta: float) -> void:
+	text = \"\"
+	text = \"target = \"
+	text += living_armor.blackboard.target.name if living_armor.blackboard.target else \"\"
+	pass
+"
+
 [node name="DemonChest" type="CharacterBody2D" unique_id=1082561769]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
 texture_filter = 1
@@ -354,3 +368,10 @@ attack_state = NodePath("../EnemyStateMachine/ESFlyAttack")
 stun_state = NodePath("../EnemyStateMachine/ESStun")
 death_state = NodePath("../EnemyStateMachine/ESDeath")
 metadata/_custom_type_script = "uid://boolmy4s0welo"
+
+[node name="Label" type="Label" parent="." unique_id=2063620599]
+offset_left = -27.0
+offset_top = -61.0
+offset_right = 13.0
+offset_bottom = -46.0
+script = SubResource("GDScript_55dq8")

@@ -10,11 +10,12 @@ extends EnemyState
 var timer : float = 0
 var duration : float = 0
 var on_cooldown : bool = false
-
+var cooldown_timer : float = 0
 
 func enter() -> void:
 	enemy.play_animation( animation_name if animation_name else "attack" )
 	duration = enemy.animation.current_animation_length
+	print ("attack duration", duration)
 	timer = 0 
 	blackboard.can_decide = false
 	on_cooldown = true
@@ -27,14 +28,17 @@ func re_enter() -> void:
 	pass
 
 func exit() -> void:
+	timer = 0
 	blackboard.can_decide = true
 	run_cooldown()
+	cooldown_timer = cooldown
 	pass
 
 func physics_update( delta : float ) -> void:
 	timer += delta
 	if timer >= duration:
 		blackboard.can_decide = true
+		print(timer)
 	if move_speed_curve:
 		var sample : float = move_speed_curve.sample( timer / duration )
 		enemy.velocity.x = move_speed * sample * blackboard.dir

@@ -40,10 +40,9 @@ func physics_update( delta : float ) -> void:
 	if speed_curve:
 		speed_sample =  speed_curve.sample( timer / duration )
 	if blackboard.target != null:
-		return
-	dir = enemy.global_position.direction_to( blackboard.target.global_position )
-	enemy.change_dir( sign( dir.x ) )
-	enemy.velocity = dir * move_speed * speed_sample
+		dir = enemy.global_position.direction_to( blackboard.target.global_position )
+		enemy.change_dir( sign( dir.x ) )
+		enemy.velocity = dir * move_speed * speed_sample
 	pass
 	
 func can_attack() -> bool:

@@ -39,16 +39,17 @@ func _physics_process( delta: float ) -> void:
 	
 	
 func _on_body_entered( n : Node2D ) -> void:
+	print("player entered")
 	player_entered.emit()
 	enemy.blackboard.target = n
-	can_see_player = true
+	timer = 0
 	pass
 	
 	
 func _on_body_exited( _n : Node2D ) -> void:
+	print("player exited")
 	started_searching.emit()
 	timer = search_duration
-	can_see_player = false
 	pass
 	
 	
