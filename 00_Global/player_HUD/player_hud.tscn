@@ -68,6 +68,7 @@ texture_under = SubResource("GradientTexture2D_iho37")
 texture_progress = SubResource("GradientTexture2D_46dm3")
 
 [node name="Button" type="Button" parent="Control" unique_id=318404599]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -77,7 +78,7 @@ offset_top = 16.0
 offset_right = -16.0
 offset_bottom = 39.0
 grow_horizontal = 0
-text = "Toggle D"
+text = "Toggle Dash"
 script = ExtResource("3_w28bm")
 particles_settings = ExtResource("4_sx6tt")
 
