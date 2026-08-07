@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://cg4hxau3yw0xv"]
+
+[ext_resource type="Script" uid="uid://bn3c8b8i8ux64" path="res://enemies/slime/slime.gd" id="1_sv735"]
+[ext_resource type="AudioStream" uid="uid://com3pe51d62n2" path="res://enemies/slime/slime_death.wav" id="2_bkm6f"]
+[ext_resource type="Texture2D" uid="uid://dcet7tabf6swn" path="res://enemies/slime/slime.png" id="2_j284o"]
+[ext_resource type="Script" uid="uid://bioualrksl3e5" path="res://general/scripts/damage_area.gd" id="3_57eei"]
+[ext_resource type="AudioStream" uid="uid://b8n0gfpyp4ljt" path="res://enemies/slime/slime_hit.wav" id="4_2ui2u"]
+[ext_resource type="Script" uid="uid://dt407t11cguea" path="res://general/scripts/hazard_area.gd" id="4_u2l51"]
+[ext_resource type="Script" uid="uid://b8q06xlfsmdvt" path="res://enemies/script/edge_detector.gd" id="6_2ui2u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2ui2u"]
+height = 26.0
+
+[sub_resource type="Animation" id="Animation_u2l51"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5ctnu"]
+resource_name = "death"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 6, 7, 8, 9, 10, 11, 17]
+}
+
+[sub_resource type="Animation" id="Animation_2ui2u"]
+resource_name = "stun"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_bkm6f"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ctnu"]
+_data = {
+&"RESET": SubResource("Animation_u2l51"),
+&"death": SubResource("Animation_5ctnu"),
+&"stun": SubResource("Animation_2ui2u"),
+&"walk": SubResource("Animation_bkm6f")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ui2u"]
+size = Vector2(26, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57eei"]
+size = Vector2(26, 18)
+
+[node name="Slime" type="CharacterBody2D" unique_id=1858903955]
+z_index = 1
+collision_layer = 0
+collision_mask = 3
+floor_constant_speed = true
+script = ExtResource("1_sv735")
+death_sound = ExtResource("2_bkm6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=927622576]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("2_j284o")
+hframes = 6
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1835855053]
+visible = false
+position = Vector2(0, -10)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_2ui2u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2055658995]
+libraries/ = SubResource("AnimationLibrary_5ctnu")
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1388951993]
+visible = false
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("3_57eei")
+audio = ExtResource("4_2ui2u")
+metadata/_custom_type_script = "uid://bioualrksl3e5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=373629027]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_2ui2u")
+
+[node name="HazardArea" type="Area2D" parent="." unique_id=803082261]
+visible = false
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_u2l51")
+damage = 3.0
+metadata/_custom_type_script = "uid://dt407t11cguea"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HazardArea" unique_id=236348681]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_57eei")
+debug_color = Color(1, 0, 0, 0.6117647)
+
+[node name="EdgeDectetor" type="RayCast2D" parent="." unique_id=1899043974]
+visible = false
+position = Vector2(7, -1)
+target_position = Vector2(0, 8)
+script = ExtResource("6_2ui2u")
+metadata/_custom_type_script = "uid://b8q06xlfsmdvt"

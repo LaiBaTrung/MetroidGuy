@@ -9,11 +9,6 @@ anchors_preset = 0
 offset_right = 12.0
 offset_bottom = 6.0
 script = ExtResource("1_48o4r")
-linked_scene = null
-entrances_top = null
-entrances_right = null
-entrances_bottom = null
-entrances_left = null
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=256321267]
 custom_minimum_size = Vector2(1, 1)

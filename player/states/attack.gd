@@ -38,8 +38,12 @@ func exit() -> void:
 func handle_inputs( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed( "attack" ):
 		timer = combo_time_window
+	if _event.is_action_pressed( "dash" ) and player.can_dash():
+		return dash
 	if _event.is_action_pressed( "Jump" ) and player.is_on_floor():
 		return jump
+	if _event.is_action_pressed( "action" ) and player.can_morph():
+		return morph_roll
 	return null
 
 
@@ -61,7 +65,7 @@ func do_attack() -> void:
 		anim_name = "attack_2"
 	player.animation_player.play( anim_name )
 	player.attack_area.activate()
-	Audio.play_spatial_sound( AUDIO_ATTACK, player.global_position )
+	Audio.play_spatial_sound( AUDIO_ATTACK, player.global_position, false, true, 0.25 )
 	pass
 	
 func _end_attack() -> void:

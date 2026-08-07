@@ -5,7 +5,8 @@ class_name PlayerStateFall
 @export var fall_gravity_multiplier : float = 1.165
 @export var jump_buffer_time: float = 0.125
 
-@onready var land_audio: AudioStreamPlayer2D = %LandAudio
+const LAND = preload("uid://cwve07jsil8bn")
+
 
 
 var coyote_timer : float = 0
@@ -23,7 +24,7 @@ func enter() -> void:
 	# handle jump count
 	if player.jump_count == 0:
 		player.jump_count = 1
-	if player.previous_state == jump or player.previous_state == attack or player.previous_state == ledge_grab :
+	if player.previous_state == jump or player.previous_state == attack or player.previous_state == ledge_grab or player.previous_state == dash or player.previous_state == morph_roll :
 		coyote_timer = 0
 	elif player.previous_state == crouch:
 		coyote_timer = 0
@@ -42,7 +43,11 @@ func exit() -> void:
 	
 # handle what happens when an input is pressed 
 func handle_inputs( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "dash" ) and player.can_dash():
+		return dash
 	if _event.is_action_pressed( "attack" ):
+		if player.ground_slam and Input.is_action_pressed("Down"):
+			return ground_slam
 		return attack
 	if _event.is_action_pressed( "Jump" ):
 		if coyote_timer > 0:
@@ -52,6 +57,8 @@ func handle_inputs( _event : InputEvent ) -> PlayerState:
 			return jump
 		else:
 			buffer_timer = jump_buffer_time
+	if _event.is_action_pressed( "action" ) and player.can_morph():
+		return morph_roll
 	return next_state
 
 
@@ -91,7 +98,8 @@ func play_land_sound() -> void:
 		0.0,
 		1.0
 	)
-	land_audio.volume_db = lerp(-20.0, 0.0, t)
+	var volume_db : float =  lerp(-10.0, 10.0, t)
+	
+	Audio.play_spatial_sound( LAND, player.global_position, false, true, volume_db, 0.5 )
 	VisualEffects.camera_shake(lerp(0.0, 0.5, t))
-	land_audio.play()
 	pass

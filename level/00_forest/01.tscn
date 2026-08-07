@@ -77,19 +77,20 @@ turbulence_influence_max = 0.2
 [node name="01" type="Node2D" unique_id=2000036591]
 
 [node name="PlayerSpawn" parent="." unique_id=450844790 instance=ExtResource("7_e4h0q")]
-position = Vector2(80, 200)
+position = Vector2(1586, 225)
 
 [node name="LevelTransition" parent="." unique_id=264362158 instance=ExtResource("4_sstrf")]
-position = Vector2(1664, 256)
+position = Vector2(1664, 305.75)
 size = 15
 location = 1
 target_level = "uid://btcwhntbwjve"
 
 [node name="BG_Parallax_container" type="Node2D" parent="." unique_id=1127981633]
+position = Vector2(0, 49.75)
 
 [node name="Sky-parallax" type="Parallax2D" parent="BG_Parallax_container" unique_id=1183070122]
 scroll_scale = Vector2(0, 0)
-scroll_offset = Vector2(4, 28)
+scroll_offset = Vector2(0, -17.75)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="BG_Parallax_container/Sky-parallax" unique_id=800823658]
 z_index = -10
@@ -157,7 +158,7 @@ collision_enabled = false
 
 [node name="Props_BG" type="Node2D" parent="." unique_id=1362633148]
 modulate = Color(0.36948058, 0.44803724, 0.60522425, 1)
-position = Vector2(61, 0)
+position = Vector2(61, 49.75)
 
 [node name="Plant" parent="Props_BG" unique_id=803707961 instance=ExtResource("5_o5tm3")]
 position = Vector2(216, 129)
@@ -195,6 +196,7 @@ speed_scale = 0.7
 position = Vector2(552, 197)
 
 [node name="Tile_map_container" type="Node2D" parent="." unique_id=127823547]
+position = Vector2(0, 49.75)
 
 [node name="BackGround" type="TileMapLayer" parent="Tile_map_container" unique_id=860409290]
 self_modulate = Color(0.6841424, 0.7435845, 1, 1)
@@ -217,6 +219,7 @@ tile_set = ExtResource("1_tqtc3")
 collision_enabled = false
 
 [node name="Props" type="Node2D" parent="." unique_id=432019462]
+position = Vector2(0, 49.75)
 
 [node name="Props_front" type="Node2D" parent="Props" unique_id=1787269609]
 
@@ -254,6 +257,7 @@ flip_h = true
 position = Vector2(1607, 263)
 
 [node name="LightStream_Parallax" type="Node2D" parent="." unique_id=1007103032]
+position = Vector2(0, 49.75)
 
 [node name="LightStream_parallax" type="Parallax2D" parent="LightStream_Parallax" unique_id=2094661696]
 scroll_scale = Vector2(1.1, 1)
@@ -337,7 +341,7 @@ texture = ExtResource("6_eh61h")
 modulate = Color(0, 0, 0, 1)
 z_index = 10
 scroll_scale = Vector2(1.4, 1)
-scroll_offset = Vector2(0, 25)
+scroll_offset = Vector2(0, 74.75)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Foreground" unique_id=1302383329]
 position = Vector2(1, 0)
@@ -371,21 +375,21 @@ collision_enabled = false
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=479393555]
 z_index = 256
-position = Vector2(-96, -49)
+position = Vector2(-96, 0.75)
 script = ExtResource("3_e37rk")
 width = 1760
 height = 366
 metadata/_custom_type_script = "uid://ciyjpq2blrphq"
 
 [node name="Fog-VFX" type="Sprite2D" parent="." unique_id=980619212]
-position = Vector2(792.99994, 105)
+position = Vector2(801.99994, 109)
 scale = Vector2(7.019531, 1.9980469)
 texture = SubResource("GradientTexture2D_o5tm3")
 
 [node name="Fog_Parallax" type="Parallax2D" parent="." unique_id=1714445679]
 z_index = 5
 scroll_scale = Vector2(1.3, 1)
-scroll_offset = Vector2(211, 27)
+scroll_offset = Vector2(-301, 76.75)
 repeat_size = Vector2(512, 0)
 autoscroll = Vector2(-15, 0)
 repeat_times = 2
@@ -397,7 +401,7 @@ texture = SubResource("NoiseTexture2D_e4h0q")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=314440734]
 material = SubResource("CanvasItemMaterial_entlb")
-position = Vector2(820, 152)
+position = Vector2(820, 201.75)
 amount = 50
 texture = SubResource("GradientTexture2D_283ib")
 lifetime = 5.0

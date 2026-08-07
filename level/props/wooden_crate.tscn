@@ -7,6 +7,8 @@
 [ext_resource type="Resource" uid="uid://ydqj6bls83sk" path="res://00_Global/visual_effects/hit_particles_setting/hit_wood_large.tres" id="5_lbgfb"]
 [ext_resource type="Script" uid="uid://bioualrksl3e5" path="res://general/scripts/damage_area.gd" id="6_lkq45"]
 [ext_resource type="Texture2D" uid="uid://snojfe7mhybh" path="res://general/sprites/props_destructible.png" id="7_0qh4b"]
+[ext_resource type="Script" uid="uid://580pq5e8kcat" path="res://general/scripts/loot_dropper.gd" id="8_2j71n"]
+[ext_resource type="Script" uid="uid://fsecfqmf62v6" path="res://general/scripts/loot_data.gd" id="9_g2d7o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mas3v"]
 size = Vector2(39, 36)
@@ -17,6 +19,12 @@ region = Rect2(53, 28, 39, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6shej"]
 size = Vector2(37, 30)
+
+[sub_resource type="Resource" id="Resource_lbgfb"]
+script = ExtResource("9_g2d7o")
+item = "uid://cf16fvcyd0rpu"
+drop_chance = 0.2
+metadata/_custom_type_script = "uid://fsecfqmf62v6"
 
 [node name="Wooden_crate" type="Node2D" unique_id=1432231622]
 script = ExtResource("1_6shej")
@@ -46,3 +54,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1402454948]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_6shej")
+
+[node name="LootDropper" type="Marker2D" parent="." unique_id=1197530236]
+script = ExtResource("8_2j71n")
+items = Array[ExtResource("9_g2d7o")]([SubResource("Resource_lbgfb")])
+metadata/_custom_type_script = "uid://580pq5e8kcat"

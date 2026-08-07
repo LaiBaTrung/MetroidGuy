@@ -233,6 +233,8 @@ text = "Load Slot 03"
 [node name="Props" type="Node2D" parent="." unique_id=942218838]
 
 [node name="Torch" parent="Props" unique_id=509100528 instance=ExtResource("2_2dq6q")]
+top_level = true
+clip_children = 2
 position = Vector2(64, 164)
 frame = 3
 frame_progress = 0.35549054
@@ -246,3 +248,7 @@ frame_progress = 0.43754444
 script = ExtResource("5_0m3ch")
 track = ExtResource("6_fk0fn")
 metadata/_custom_type_script = "uid://dkpp1xlfodtb8"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=822269049]
+visibility_layer = 33
+color = Color(0, 0, 0, 1)

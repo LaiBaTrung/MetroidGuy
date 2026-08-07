@@ -3,7 +3,8 @@ class_name PlayerStateJump
 
 @export var jump_velocity : float = 480.0
 
-@onready var jump_audio: AudioStreamPlayer2D = %JumpAudio
+const JUMP = preload("uid://b34suoxm14xwv")
+
 
 func init() -> void:
 	pass
@@ -37,10 +38,16 @@ func exit() -> void:
 	
 # handle what happens when an input is pressed 
 func handle_inputs( event : InputEvent ) -> PlayerState:
+	if event.is_action_pressed( "dash" ) and player.can_dash():
+		return dash
 	if event.is_action_pressed( "attack" ):
+		if player.ground_slam and Input.is_action_pressed("Down"):
+			return ground_slam
 		return attack
 	if event.is_action_released( "Jump" ):
 		return fall
+	if event.is_action_pressed( "action" ) and player.can_morph():
+		return morph_roll
 	return next_state
 
 
@@ -63,16 +70,16 @@ func do_jump() -> void:
 	if player.ledge_grab_jump:
 		player.ledge_grab_jump = false
 		player.velocity.y = -jump_velocity
-		jump_audio.play()
+		Audio.play_spatial_sound( JUMP, player.global_position, false, true, 0.25 )
 		return
 	if player.jump_count > 0:
-		if player.double_jump == false:
+		if player.double_jump == false: 
 			return
 		elif player.jump_count > 1:
 			return
 	player.jump_count += 1
 	player.velocity.y = -jump_velocity
-	jump_audio.play()
+	Audio.play_spatial_sound( JUMP, player.global_position, false, true, 0.25 )
 	pass
 	
 	

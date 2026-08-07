@@ -16,14 +16,15 @@
 [ext_resource type="Script" uid="uid://yqxicvnojddu" path="res://player/states/Death.gd" id="10_e7oew"]
 [ext_resource type="Texture2D" uid="uid://by2j3pfrmuob7" path="res://player/sprites/hero1.png" id="10_tqiix"]
 [ext_resource type="Script" uid="uid://bm0r2ke74bnuo" path="res://general/scripts/attack_area.gd" id="11_2ieo8"]
+[ext_resource type="Script" uid="uid://brlx1m77s1ym2" path="res://player/states/dash.gd" id="11_x7c3f"]
+[ext_resource type="Script" uid="uid://dbnrnu1evtie2" path="res://player/states/ground_slam.gd" id="12_s7qer"]
+[ext_resource type="Script" uid="uid://dqe0cqv0o1y8q" path="res://player/scripts/player_sprite.gd" id="13_bjvpn"]
+[ext_resource type="Script" uid="uid://d2kr85jyhdo8s" path="res://player/states/morphroll.gd" id="13_g4c7l"]
 [ext_resource type="Script" uid="uid://bioualrksl3e5" path="res://general/scripts/damage_area.gd" id="14_kb6p2"]
-[ext_resource type="AudioStream" uid="uid://byj4x0u05npvn" path="res://general/audio/aargh.wav" id="16_32hag"]
-[ext_resource type="AudioStream" uid="uid://b34suoxm14xwv" path="res://general/audio/jump.wav" id="19_c35mf"]
-[ext_resource type="AudioStream" uid="uid://cwve07jsil8bn" path="res://general/audio/land.wav" id="20_65viv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boad6"]
 radius = 8.0
-height = 50.0
+height = 46.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rgyib"]
 radius = 8.0
@@ -251,6 +252,39 @@ tracks/3/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_g4c7l"]
+resource_name = "ball"
+length = 0.225
+loop_mode = 1
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.07692308, 0.15384616),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [44, 46, 45]
+}
+
+[sub_resource type="Animation" id="Animation_x7c3f"]
+resource_name = "dash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [29]
+}
+
 [sub_resource type="Animation" id="Animation_e7oew"]
 resource_name = "death"
 length = 1.4
@@ -266,6 +300,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 61]
+}
+
+[sub_resource type="Animation" id="Animation_s7qer"]
+resource_name = "ground_slam"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [43]
 }
 
 [sub_resource type="Animation" id="Animation_tqiix"]
@@ -310,13 +359,16 @@ _data = {
 &"Run": SubResource("Animation_2ieo8"),
 &"attack": SubResource("Animation_yllr7"),
 &"attack_2": SubResource("Animation_ebec5"),
+&"ball": SubResource("Animation_g4c7l"),
+&"dash": SubResource("Animation_x7c3f"),
 &"death": SubResource("Animation_e7oew"),
+&"ground_slam": SubResource("Animation_s7qer"),
 &"ledge_grab": SubResource("Animation_tqiix"),
 &"take_damage": SubResource("Animation_wodsf")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boad6"]
-size = Vector2(20, 3)
+size = Vector2(20, 6)
 
 [sub_resource type="Gradient" id="Gradient_boad6"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -331,6 +383,9 @@ fill_to = Vector2(1, 0.4940171)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebec5"]
 size = Vector2(67, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7qer"]
+size = Vector2(68, 73)
 
 [node name="Player" type="CharacterBody2D" unique_id=186652215 groups=["Player"]]
 z_index = 1
@@ -380,12 +435,26 @@ script = ExtResource("9_tqiix")
 unique_name_in_owner = true
 script = ExtResource("10_e7oew")
 
+[node name="Dash" type="Node" parent="States" unique_id=1712098226]
+unique_name_in_owner = true
+script = ExtResource("11_x7c3f")
+
+[node name="GroundSlam" type="Node" parent="States" unique_id=1149855185]
+unique_name_in_owner = true
+script = ExtResource("12_s7qer")
+velocity = 600.0
+
+[node name="MorphRoll" type="Node" parent="States" unique_id=1552996503]
+unique_name_in_owner = true
+script = ExtResource("13_g4c7l")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217855563]
 texture_filter = 1
 position = Vector2(0, -39)
 texture = ExtResource("10_tqiix")
 hframes = 16
 vframes = 4
+script = ExtResource("13_bjvpn")
 
 [node name="AttackSprite2D" type="Sprite2D" parent="Sprite2D" unique_id=38529538]
 unique_name_in_owner = true
@@ -396,7 +465,7 @@ hframes = 8
 
 [node name="CollisionStand" type="CollisionShape2D" parent="." unique_id=1692520328 groups=["Player"]]
 visible = false
-position = Vector2(0, -25)
+position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_boad6")
 debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
 
@@ -422,11 +491,18 @@ autoplay = &"Idle"
 
 [node name="one_way_platform_Shapecast" type="ShapeCast2D" parent="." unique_id=919013856]
 visible = false
-enabled = false
 shape = SubResource("RectangleShape2D_boad6")
 target_position = Vector2(0, 6)
 max_results = 12
 collision_mask = 2
+
+[node name="GroundSlamShapeCast" type="ShapeCast2D" parent="." unique_id=370410249]
+visible = false
+shape = SubResource("RectangleShape2D_boad6")
+target_position = Vector2(0, 18)
+max_results = 4
+collision_mask = 192
+collide_with_areas = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1033520481]
 process_mode = 3
@@ -464,6 +540,21 @@ position = Vector2(33.5, 0)
 shape = SubResource("RectangleShape2D_ebec5")
 debug_color = Color(1, 0, 0.026519299, 0.41960785)
 
+[node name="GroundSlamAttackArea" type="Area2D" parent="." unique_id=764705289]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 96
+monitorable = false
+script = ExtResource("11_2ieo8")
+damage = 5.0
+metadata/_custom_type_script = "uid://bm0r2ke74bnuo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSlamAttackArea" unique_id=675280811]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_s7qer")
+debug_color = Color(1, 0, 0.026519299, 0.41960785)
+
 [node name="DamageArea" type="Area2D" parent="." unique_id=1767371180]
 unique_name_in_owner = true
 visible = false
@@ -488,34 +579,36 @@ debug_color = Color(0.4824648, 0.89934784, 0.9999996, 0.41960785)
 [node name="Ledge_grab_miss" type="RayCast2D" parent="." unique_id=1282922566]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -64)
+position = Vector2(0, -62)
 target_position = Vector2(20, 0)
 hit_from_inside = true
 
 [node name="Ledge_grab_hit" type="RayCast2D" parent="." unique_id=1267331099]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -55)
+position = Vector2(0, -56)
 target_position = Vector2(15, 0)
 hit_from_inside = true
 
 [node name="AudioStream" type="Node2D" parent="." unique_id=867327144]
 position = Vector2(0, -28)
 
-[node name="HurtAudio" type="AudioStreamPlayer2D" parent="AudioStream" unique_id=436387203]
-unique_name_in_owner = true
-stream = ExtResource("16_32hag")
-volume_db = -5.0
-bus = &"SFX"
+[node name="BallRays" type="Node2D" parent="." unique_id=1800921686]
+visible = false
 
-[node name="JumpAudio" type="AudioStreamPlayer2D" parent="AudioStream" unique_id=1491024289]
+[node name="BallRayUp" type="RayCast2D" parent="BallRays" unique_id=1348448399]
 unique_name_in_owner = true
-stream = ExtResource("19_c35mf")
-volume_db = -5.0
-bus = &"SFX"
+position = Vector2(0, -4)
+enabled = false
+exclude_parent = false
+target_position = Vector2(0, -43)
+hit_from_inside = true
 
-[node name="LandAudio" type="AudioStreamPlayer2D" parent="AudioStream" unique_id=357394919]
+[node name="BallRayDown" type="RayCast2D" parent="BallRays" unique_id=826598723]
 unique_name_in_owner = true
-stream = ExtResource("20_65viv")
-volume_db = -5.0
-bus = &"SFX"
+position = Vector2(0, -1)
+enabled = false
+exclude_parent = false
+target_position = Vector2(0, 6)
+collision_mask = 3
+hit_from_inside = true

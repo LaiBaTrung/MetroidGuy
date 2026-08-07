@@ -10,7 +10,7 @@ const DEATH_AUDIO = preload("uid://dp1dhdjwuyoao")
 # what happens when enter this state
 func enter() -> void:
 	player.animation_player.play( "death" )
-	Audio.play_spatial_sound( DEATH_AUDIO, player.global_position )
+	Audio.play_spatial_sound( DEATH_AUDIO, player.global_position, true )
 	Audio.play_music( null )
 	damage_area.monitorable = false
 	await player.animation_player.animation_finished

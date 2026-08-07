@@ -3,7 +3,8 @@
 extends Node2D
 class_name Breakable
 
-#signal destroyed
+signal destroyed
+signal damage_taken
 
 @export var hp : float = 3
 @export var fixed_hit_count : bool = false
@@ -19,6 +20,8 @@ class_name Breakable
 @export var destroy_audio : AudioStream = preload("uid://dn6ssy3xf767j")
 
 
+var _destroy : bool = false
+
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		return
@@ -28,6 +31,8 @@ func _ready() -> void:
 	pass
 	
 func _on_damage_taken(attack_area : AttackArea) -> void:
+	if _destroy:
+		return
 	if fixed_hit_count:
 		hp -= 1
 	else:
@@ -39,10 +44,13 @@ func _on_damage_taken(attack_area : AttackArea) -> void:
 		dir.x *= -1
 		
 	if hp > 0:
+		damage_taken.emit()
 		Audio.play_spatial_sound( hit_audio, pos )
 		for p in hit_particles:
 			VisualEffects.hit_particales( pos, dir, p ) 
 	else:
+		_destroy = true
+		destroyed.emit()
 		Audio.play_spatial_sound( destroy_audio, pos )
 		for p in destroy_particles:
 			VisualEffects.hit_particales( pos, dir, p )

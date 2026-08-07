@@ -15,6 +15,7 @@ func init() -> void:
 # what happens when enter this state
 func enter() -> void:
 	player.ledge_grab_jump = true
+	player.dash_count = 0
 	player.animation_player.play( "ledge_grab" )
 	player.velocity = Vector2.ZERO
 	player.gravity_multiplier = 0

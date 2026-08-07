@@ -15,7 +15,6 @@ var player_position : Vector2
 
 
 func _ready() -> void:
-	# grab player
 	show_pause_screen()
 	system_menu_button.pressed.connect( show_system_menu )
 	Audio.setup_button_audio( self )

@@ -8,7 +8,7 @@ signal damage_taken
 #endregion
 
 #region /// on ready variables
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: PlayerSprite = $Sprite2D
 @onready var attack_sprite: Sprite2D = %AttackSprite2D
 @onready var collision_stand: CollisionShape2D = $CollisionStand
 @onready var collision_crouch: CollisionShape2D = $CollisionCrouch
@@ -56,10 +56,12 @@ var max_hp : float = 20:
 		max_hp = value
 		Messages.player_health_changed.emit( hp, max_hp )
 var dash : bool = false
-var double_jump : bool = true
+var dash_count : int = 0
+var double_jump : bool = false
 var jump_count : int = 0
 var ground_slam : bool = false
 var morph_roll  : bool = false
+var can_interact : bool = false
 #endregion
 
 #region /// standard variables
@@ -77,6 +79,7 @@ func _ready() -> void:
 	self.call_deferred("reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
 	Messages.back_to_title_screen.connect( queue_free )
+	Messages.input_hint_changed.connect( _on_input_hint_changed )
 	damage_area.damage_taken.connect( _on_damage_taken )
 	hp = max_hp
 	pass
@@ -94,7 +97,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 		
 	# get rid later
-	if event is InputEventKey and event.pressed:
+	if event is InputEventKey and event.pressed: 
 		if event.keycode == KEY_MINUS:
 			if Input.is_key_pressed(KEY_SHIFT):
 				max_hp -= 10 
@@ -215,3 +218,22 @@ func _on_damage_taken( incomming_damage : AttackArea ) -> void:
 	hp -= incomming_damage.damage
 	damage_taken.emit()
 	pass
+
+func _on_input_hint_changed( promt_name : String ) -> void:
+	if promt_name == "interact":
+		can_interact = true
+	else:
+		can_interact = false
+	pass
+
+
+func can_dash() -> bool:
+	if dash == false or dash_count > 0:
+		return false
+	return true
+	
+	
+func can_morph() -> bool:
+	if morph_roll == false or can_interact == true:
+		return false
+	return true

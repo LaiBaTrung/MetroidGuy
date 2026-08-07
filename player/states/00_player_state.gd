@@ -15,6 +15,9 @@ var next_state: PlayerState
 @onready var take_damage: PlayerStateTakeDamage = %TakeDamage
 @onready var death: PlayerStateDeath = %Death
 @onready var ledge_grab: PlayerStateLedgeGrab = %LedgeGrab
+@onready var dash: PlayerStateDash = %Dash
+@onready var ground_slam: PlayerStateGroundSlam = %GroundSlam
+@onready var morph_roll: PlayerStateMorphRoll = %MorphRoll
 #endregion
 
 

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bfu3f868mkn5w" path="res://paused_menu/scripts/pause_menu.gd" id="1_eppgf"]
 [ext_resource type="PackedScene" uid="uid://canqidspcxbnv" path="res://paused_menu/map_node.tscn" id="2_i6ckp"]
+[ext_resource type="Script" uid="uid://e8bfyh2bs600" path="res://paused_menu/scripts/abilities_list.gd" id="3_c2t11"]
+[ext_resource type="Texture2D" uid="uid://detl6bsecc5k8" path="res://player/sprites/abilities.png" id="4_3hkn6"]
 
 [sub_resource type="FontVariation" id="FontVariation_eppgf"]
 spacing_glyph = 6
@@ -56,6 +58,26 @@ _data = {
 &"default": SubResource("Animation_c2t11")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkefl"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(104, 41, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nshl5"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(133, 8, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15jb5"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(75, 64, 10, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpyw6"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(101, 101, 21, 21)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qutg7"]
+line_spacing = 2.0
+font_size = 12
+
 [node name="PauseMenu" type="CanvasLayer" unique_id=1909841971]
 process_mode = 3
 script = ExtResource("1_eppgf")
@@ -75,7 +97,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.76862746)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1518636821]
 custom_minimum_size = Vector2(0, 36)
@@ -83,7 +105,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-color = Color(0, 0, 0, 0.44313726)
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="Control/ColorRect2" unique_id=396052001]
 layout_mode = 1
@@ -112,32 +134,24 @@ offset_top = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Map" type="Control" parent="PausedScreen" unique_id=1405171930]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -104.0
-offset_right = 227.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Map" type="Control" parent="PausedScreen" unique_id=357840659]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 136.0
+offset_right = 500.0
+offset_bottom = 177.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MapNode" parent="PausedScreen/Map" unique_id=840487397 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.3137255, 0.7529412, 0.34117648, 1)
 layout_mode = 0
-offset_left = 14.0
+offset_left = 15.0
 offset_top = 84.0
-offset_right = 58.0
+offset_right = 59.0
 offset_bottom = 93.0
 linked_scene = "uid://cdws5n7clorow"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([4.0])
-entrances_bottom = Array[float]([])
-entrances_left = Array[float]([])
 
 [node name="MapNode2" parent="PausedScreen/Map" unique_id=224339734 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.31292087, 0.75253814, 0.3399578, 1)
@@ -147,7 +161,6 @@ offset_top = 85.0
 offset_right = 104.0
 offset_bottom = 94.0
 linked_scene = "uid://btcwhntbwjve"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([2.275])
 entrances_bottom = Array[float]([15.225])
 entrances_left = Array[float]([3.0749998])
@@ -162,8 +175,6 @@ offset_bottom = 107.0
 linked_scene = "uid://ba0fjc2p0bcvr"
 entrances_top = Array[float]([3.6])
 entrances_right = Array[float]([3.0])
-entrances_bottom = Array[float]([])
-entrances_left = Array[float]([])
 
 [node name="MapNode4" parent="PausedScreen/Map" unique_id=1282090938 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
@@ -173,9 +184,7 @@ offset_top = 96.0
 offset_right = 150.0
 offset_bottom = 112.0
 linked_scene = "uid://cg65fjxwyekyd"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([4.175])
-entrances_bottom = Array[float]([])
 entrances_left = Array[float]([5.8999996])
 
 [node name="MapNode5" parent="PausedScreen/Map" unique_id=1885727137 instance=ExtResource("2_i6ckp")]
@@ -186,9 +195,7 @@ offset_top = 99.0
 offset_right = 164.0
 offset_bottom = 105.0
 linked_scene = "uid://2b0e771q7p6v"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([1.0])
-entrances_bottom = Array[float]([])
 entrances_left = Array[float]([1.0])
 
 [node name="MapNode6" parent="PausedScreen/Map" unique_id=30385313 instance=ExtResource("2_i6ckp")]
@@ -199,9 +206,7 @@ offset_top = 97.0
 offset_right = 183.0
 offset_bottom = 118.0
 linked_scene = "uid://dm3l15q0v8ufv"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([3.3249998, 12.175, 16.0])
-entrances_bottom = Array[float]([])
 entrances_left = Array[float]([3.3249998])
 
 [node name="MapNode7" parent="PausedScreen/Map" unique_id=489227485 instance=ExtResource("2_i6ckp")]
@@ -212,9 +217,7 @@ offset_top = 86.0
 offset_right = 117.0
 offset_bottom = 92.0
 linked_scene = "uid://c3w1wivagw4jd"
-entrances_top = Array[float]([])
 entrances_right = Array[float]([1.0])
-entrances_bottom = Array[float]([])
 entrances_left = Array[float]([1.0])
 
 [node name="MapNode8" parent="PausedScreen/Map" unique_id=120928616 instance=ExtResource("2_i6ckp")]
@@ -225,14 +228,10 @@ offset_top = 83.0
 offset_right = 169.0
 offset_bottom = 92.0
 linked_scene = "uid://i38csc8gmep5"
-entrances_top = Array[float]([])
-entrances_right = Array[float]([])
-entrances_bottom = Array[float]([])
 entrances_left = Array[float]([4.475])
 
 [node name="PlayerIndicator" type="Control" parent="PausedScreen/Map" unique_id=648942150]
 unique_name_in_owner = true
-layout_mode = 1
 anchors_preset = 0
 offset_left = 18.999998
 offset_top = 88.99999
@@ -283,6 +282,57 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "System"
+
+[node name="AbilitiesList" type="VBoxContainer" parent="PausedScreen" unique_id=1369675558]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 35.0
+offset_right = 51.0
+offset_bottom = 182.0
+alignment = 1
+script = ExtResource("3_c2t11")
+
+[node name="AbilityDoubleJump" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1657360278]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+icon = SubResource("AtlasTexture_bkefl")
+icon_alignment = 1
+
+[node name="AbilityDash" type="Button" parent="PausedScreen/AbilitiesList" unique_id=398810751]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = SubResource("AtlasTexture_nshl5")
+icon_alignment = 1
+
+[node name="AbilityGroundSlam" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1650969224]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = SubResource("AtlasTexture_15jb5")
+icon_alignment = 1
+
+[node name="AbilityMorphRoll" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1867313067]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+icon = SubResource("AtlasTexture_jpyw6")
+icon_alignment = 1
+
+[node name="AbilitiesDescription" type="Label" parent="PausedScreen" unique_id=2060521237]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 19.0
+offset_top = 198.0
+offset_right = 370.0
+offset_bottom = 213.0
+label_settings = SubResource("LabelSettings_qutg7")
 
 [node name="System" type="Control" parent="." unique_id=711923889]
 unique_name_in_owner = true

@@ -18,10 +18,14 @@ func exit() -> void:
 	
 # handle what happens when an input is pressed 
 func handle_inputs( _event : InputEvent ) -> PlayerState:
+	if _event.is_action_pressed( "dash" ) and player.can_dash():
+		return dash
 	if _event.is_action_pressed( "attack" ):
 		return attack
 	if _event.is_action_pressed( "Jump" ):
 		return jump
+	if _event.is_action_pressed( "action" ) and player.can_morph():
+		return morph_roll
 	return next_state
 
 

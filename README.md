@@ -2,8 +2,8 @@
 - Player movements using state machine
 - World building using builit-in engine stuffs
 - Level transition, Camera bounds, audio bus which auto trigger when a level started 
-- Player abilities: Attack, dash, roll, double jump,... (in development)
-- Enemies type: Walk, fly
+- Player abilities: Attack, dash, roll, double jump ledge grab, ground_slam
+- Enemies type: Walk, fly ( in development )
 - Enemies can meele, shoot
 - Enemy can detect player using sensor (not sure)
 - Boss fight ()
