@@ -13,7 +13,7 @@ var timer : float = 0
 var duration : float = 0
 var on_cooldown : bool = false
 var speed_sample : float = 1.0
-
+var target_pos : Vector2
 
 func enter() -> void:
 	enemy.play_animation( animation_name if animation_name else "attack" )
@@ -21,6 +21,9 @@ func enter() -> void:
 	timer = 0 
 	blackboard.can_decide = false
 	on_cooldown = true
+	target_pos = blackboard.target.global_position
+	dir = enemy.global_position.direction_to( target_pos )
+	enemy.change_dir( sign( dir.x ) )
 	if attack_area:
 		attack_area.flip( blackboard.dir )
 	pass
@@ -39,10 +42,9 @@ func physics_update( delta : float ) -> void:
 		blackboard.can_decide = true
 	if speed_curve:
 		speed_sample =  speed_curve.sample( timer / duration )
-	if blackboard.target != null:
-		dir = enemy.global_position.direction_to( blackboard.target.global_position )
-		enemy.change_dir( sign( dir.x ) )
-		enemy.velocity = dir * move_speed * speed_sample
+	#dir = enemy.global_position.direction_to( blackboard.target.global_position )
+	#enemy.change_dir( sign( dir.x ) )
+	enemy.velocity = dir * move_speed * speed_sample
 	pass
 	
 func can_attack() -> bool:

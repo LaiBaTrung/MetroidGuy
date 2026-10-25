@@ -15,10 +15,10 @@ var cooldown_timer : float = 0
 func enter() -> void:
 	enemy.play_animation( animation_name if animation_name else "attack" )
 	duration = enemy.animation.current_animation_length
-	print ("attack duration", duration)
-	timer = 0 
+	timer = 0
 	blackboard.can_decide = false
 	on_cooldown = true
+	cooldown_timer = cooldown
 	enemy.velocity.x = move_speed * blackboard.dir
 	if attack_area:
 		attack_area.flip( blackboard.dir )
@@ -38,7 +38,6 @@ func physics_update( delta : float ) -> void:
 	timer += delta
 	if timer >= duration:
 		blackboard.can_decide = true
-		print(timer)
 	if move_speed_curve:
 		var sample : float = move_speed_curve.sample( timer / duration )
 		enemy.velocity.x = move_speed * sample * blackboard.dir

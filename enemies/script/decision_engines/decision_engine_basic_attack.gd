@@ -1,13 +1,9 @@
 class_name DecisionEngineBasicAttack	
 extends DecisionEngine
 
-# Included in DecisionEngine
-# var enemy : Enemy
-# var current_state : EnemyState
-# var blackboard : BlackBoard
-
 @export var attack_state : ESAttack
 @export var chase_state : EnemyState
+
 @onready var es_walk: ESWalk = %ESWalk
 @onready var es_stun: ESStun = %ESStun
 @onready var es_death: ESDeath = %ESDeath

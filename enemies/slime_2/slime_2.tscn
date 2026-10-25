@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://d31rvs73g1gs3" path="res://00_Global/visual_effects/hit_particle_settings.gd" id="17_qpicr"]
 [ext_resource type="Script" uid="uid://580pq5e8kcat" path="res://general/scripts/loot_dropper.gd" id="18_7lkcl"]
 [ext_resource type="Script" uid="uid://fsecfqmf62v6" path="res://general/scripts/loot_data.gd" id="19_2mgqq"]
+[ext_resource type="Script" uid="uid://b8r3dnf3k41x5" path="res://general/scripts/danage_modulate.gd" id="19_7lkcl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7cba3"]
 height = 26.0
@@ -225,3 +226,7 @@ metadata/_custom_type_script = "uid://bkantsi643sij"
 script = ExtResource("18_7lkcl")
 items = Array[ExtResource("19_2mgqq")]([SubResource("Resource_jp5mc")])
 metadata/_custom_type_script = "uid://580pq5e8kcat"
+
+[node name="DamageModulate" type="Node" parent="." unique_id=1112128089]
+script = ExtResource("19_7lkcl")
+metadata/_custom_type_script = "uid://b8r3dnf3k41x5"
