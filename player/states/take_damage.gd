@@ -44,6 +44,9 @@ func process(_delta: float) -> PlayerState:
 	if time <= 0:
 		if player.hp <= 0:
 			return death
+		# Idle refills jump/dash, so a mid-air hit must not land there
+		if not player.is_on_floor():
+			return fall
 		return idle
 	return null
 

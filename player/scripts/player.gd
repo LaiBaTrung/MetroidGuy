@@ -74,7 +74,9 @@ var direction_locked : bool = false
 
 func _ready() -> void:
 	if get_tree().get_first_node_in_group( "Player" ) != self:
+		# a PlayerSpawn in every room makes a copy; stop here so it never touches HUD or signals
 		self.queue_free()
+		return
 	initialize_states()
 	self.call_deferred("reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
@@ -96,8 +98,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		add_child( pause_menu )
 		return
 		
-	# get rid later
-	if event is InputEventKey and event.pressed: 
+	# get rid later (debug builds only, so exported games never get these)
+	if OS.is_debug_build() and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_MINUS:
 			if Input.is_key_pressed(KEY_SHIFT):
 				max_hp -= 10 

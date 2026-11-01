@@ -6,6 +6,9 @@ extends EnemyState
 var left_limit : float
 var right_limit : float
 
+func _ready() -> void:
+	_set_limit()
+	pass
 
 func enter() -> void:
 	var anim : String = animation_name if animation_name else "fly"

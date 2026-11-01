@@ -19,6 +19,9 @@ func _ready() -> void:
 	
 	
 func _unhandled_key_input(event: InputEvent) -> void:
+	# debug hotkeys: exported games never get them
+	if not OS.is_debug_build():
+		return
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_F5:
 			save_game()
@@ -64,6 +67,8 @@ func create_new_game_save(slot : int) -> void:
 
 func save_game() -> void:
 	var player : Player = get_tree().get_first_node_in_group( "Player" )
+	if not player:
+		return # e.g. F5 on the title screen
 	save_data = {
 	"scene_path" : SceneManager.current_scene_uid,
 		"x"  	 : player.global_position.x,
@@ -83,7 +88,7 @@ func save_game() -> void:
 	
 
 func load_game(slot : int) -> void:
-	if not FileAccess.file_exists( get_file_name(current_slot) ):
+	if not FileAccess.file_exists( get_file_name(slot) ):
 		return
 	current_slot = slot
 	var save_file = FileAccess.open( get_file_name(current_slot), FileAccess.READ )

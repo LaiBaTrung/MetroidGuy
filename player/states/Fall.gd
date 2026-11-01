@@ -24,7 +24,7 @@ func enter() -> void:
 	# handle jump count
 	if player.jump_count == 0:
 		player.jump_count = 1
-	if player.previous_state == jump or player.previous_state == attack or player.previous_state == ledge_grab or player.previous_state == dash or player.previous_state == morph_roll :
+	if player.previous_state == jump or player.previous_state == attack or player.previous_state == ledge_grab or player.previous_state == dash or player.previous_state == morph_roll or player.previous_state == take_damage :
 		coyote_timer = 0
 	elif player.previous_state == crouch:
 		coyote_timer = 0
