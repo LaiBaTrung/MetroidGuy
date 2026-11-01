@@ -49,34 +49,29 @@ target_level = "uid://2b0e771q7p6v"
 target_area_name = "LevelTransition2"
 
 [node name="LevelTransition2" parent="." unique_id=1394972983 instance=ExtResource("4_4fcce")]
-position = Vector2(736, 253)
+position = Vector2(736, 256)
 size = 4
 location = 1
-target_level = "uid://2b0e771q7p6v"
-target_area_name = "LevelTransition2"
+target_level = "uid://ic2iyhwyd1ld"
 
 [node name="LevelTransition3" parent="." unique_id=2073953985 instance=ExtResource("4_4fcce")]
-position = Vector2(736, 607)
+position = Vector2(736, 608)
 size = 4
 location = 1
-target_level = "uid://2b0e771q7p6v"
-target_area_name = "LevelTransition2"
+target_level = "uid://bcr2ndenh7qdl"
 
 [node name="LevelTransition4" parent="." unique_id=972161119 instance=ExtResource("4_4fcce")]
-position = Vector2(736, 842)
-size = 4
+position = Vector2(736, 832)
+size = 3
 location = 1
-target_level = "uid://2b0e771q7p6v"
-target_area_name = "LevelTransition2"
+target_level = "uid://d13j6kklrxw8i"
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1444788897]
-visible = false
 color = Color(0, 0, 0, 1)
 energy = 0.8
 blend_mode = 2
 
 [node name="props" type="Node2D" parent="." unique_id=1347563671]
-visible = false
 
 [node name="Torch" parent="props" unique_id=509100528 instance=ExtResource("5_t5l7f")]
 position = Vector2(142, 774)
