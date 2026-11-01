@@ -92,10 +92,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		velocity.y *= 0.5
 	if event.is_action_pressed( "action" ):
 		Messages.player_interacted.emit( self )
-	elif event.is_action_pressed("pause"):
+	elif event.is_action_pressed("pause") or event.is_action_pressed("map"):
+		get_viewport().set_input_as_handled()
 		get_tree().paused = true
 		var pause_menu : PauseMenu = load( "res://paused_menu/paused_menu.tscn" ).instantiate()  
 		add_child( pause_menu )
+		if event.is_action_pressed("map"):
+			pause_menu.open_map()
 		return
 		
 	# get rid later (debug builds only, so exported games never get these)
