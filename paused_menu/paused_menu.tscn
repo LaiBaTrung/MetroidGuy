@@ -126,6 +126,7 @@ text = "PAUSED"
 
 [node name="PausedScreen" type="Control" parent="." unique_id=1154607725]
 unique_name_in_owner = true
+clip_contents = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,6 +231,119 @@ offset_bottom = 92.0
 linked_scene = "uid://i38csc8gmep5"
 entrances_left = Array[float]([4.475])
 
+[node name="MapNode9" parent="PausedScreen/Map" unique_id=1142435988 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
+layout_mode = 0
+offset_left = 185.0
+offset_top = 80.0
+offset_right = 217.0
+offset_bottom = 96.0
+
+[node name="MapNode10" parent="PausedScreen/Map" unique_id=668713142 instance=ExtResource("2_i6ckp")]
+modulate = Color(0, 0.12156863, 1, 1)
+layout_mode = 0
+offset_left = 185.0
+offset_top = 99.0
+offset_right = 216.0
+offset_bottom = 112.0
+
+[node name="MapNode11" parent="PausedScreen/Map" unique_id=254272665 instance=ExtResource("2_i6ckp")]
+modulate = Color(0, 0.12156863, 1, 1)
+layout_mode = 0
+offset_left = 185.0
+offset_top = 113.0
+offset_right = 231.0
+offset_bottom = 124.0
+
+[node name="MapNode12" parent="PausedScreen/Map" unique_id=1227122873 instance=ExtResource("2_i6ckp")]
+modulate = Color(0, 0.12156863, 1, 1)
+layout_mode = 0
+offset_left = 188.0
+offset_top = 128.0
+offset_right = 232.0
+offset_bottom = 142.0
+
+[node name="MapNode13" parent="PausedScreen/Map" unique_id=442468404 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
+layout_mode = 0
+offset_left = 218.0
+offset_top = 64.0
+offset_right = 235.0
+offset_bottom = 93.0
+
+[node name="MapNode14" parent="PausedScreen/Map" unique_id=1987308760 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
+layout_mode = 0
+offset_left = 218.0
+offset_top = 49.0
+offset_right = 250.0
+offset_bottom = 61.0
+
+[node name="MapNode15" parent="PausedScreen/Map" unique_id=1162787591 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 0
+offset_left = 243.0
+offset_top = 21.0
+offset_right = 249.0
+offset_bottom = 47.0
+
+[node name="MapNode16" parent="PausedScreen/Map" unique_id=2100070256 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
+layout_mode = 0
+offset_left = 252.0
+offset_top = 22.0
+offset_right = 275.0
+offset_bottom = 41.0
+
+[node name="MapNode17" parent="PausedScreen/Map" unique_id=1010392253 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.8901961, 0.88235295, 0.2, 1)
+layout_mode = 0
+offset_left = 255.0
+offset_top = 48.0
+offset_right = 274.0
+offset_bottom = 60.0
+
+[node name="MapNode18" parent="PausedScreen/Map" unique_id=1594429654 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
+layout_mode = 0
+offset_left = 237.0
+offset_top = 66.0
+offset_right = 283.0
+offset_bottom = 79.0
+
+[node name="MapNode19" parent="PausedScreen/Map" unique_id=39020870 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
+layout_mode = 0
+offset_left = 290.0
+offset_top = 67.0
+offset_right = 325.0
+offset_bottom = 80.0
+
+[node name="MapNode20" parent="PausedScreen/Map" unique_id=1489784639 instance=ExtResource("2_i6ckp")]
+modulate = Color(0, 0.12156863, 1, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 82.0
+offset_right = 252.0
+offset_bottom = 110.0
+
+[node name="MapNode21" parent="PausedScreen/Map" unique_id=158874263 instance=ExtResource("2_i6ckp")]
+modulate = Color(0, 0.12156863, 1, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 112.0
+offset_right = 276.0
+offset_bottom = 124.0
+
+[node name="MapNode22" parent="PausedScreen/Map" unique_id=1380495299 instance=ExtResource("2_i6ckp")]
+modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 127.0
+offset_right = 273.0
+offset_bottom = 143.0
+
 [node name="PlayerIndicator" type="Control" parent="PausedScreen/Map" unique_id=648942150]
 unique_name_in_owner = true
 anchors_preset = 0
@@ -333,6 +447,22 @@ offset_top = 198.0
 offset_right = 370.0
 offset_bottom = 213.0
 label_settings = SubResource("LabelSettings_qutg7")
+
+[node name="MapButton" type="Button" parent="PausedScreen" unique_id=799286197]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -31.0
+offset_right = -112.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Map"
 
 [node name="System" type="Control" parent="." unique_id=711923889]
 unique_name_in_owner = true

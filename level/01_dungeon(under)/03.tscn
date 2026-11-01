@@ -66,19 +66,19 @@ texture = SubResource("GradientTexture2D_wfq62")
 [node name="Props" type="Node2D" parent="." unique_id=847737616]
 
 [node name="Torch" parent="Props" unique_id=509100528 instance=ExtResource("4_amcfj")]
-position = Vector2(495, 195)
+position = Vector2(495, 197)
 speed_scale = 1.2
 
 [node name="Torch2" parent="Props" unique_id=1977609030 instance=ExtResource("4_amcfj")]
-position = Vector2(721, 164)
+position = Vector2(721, 165)
 speed_scale = 1.1
 
 [node name="Torch3" parent="Props" unique_id=1399750023 instance=ExtResource("4_amcfj")]
-position = Vector2(111, 101)
+position = Vector2(111, 262)
 speed_scale = 0.7
 
 [node name="Torch4" parent="Props" unique_id=822920194 instance=ExtResource("4_amcfj")]
-position = Vector2(972, 260)
+position = Vector2(972, 262)
 speed_scale = 0.9
 
 [node name="Plant" parent="Props" unique_id=803707961 instance=ExtResource("5_amcfj")]

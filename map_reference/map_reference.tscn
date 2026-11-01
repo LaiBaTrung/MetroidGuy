@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://bi8aelmx2ns37"]
 
-[ext_resource type="Texture2D" uid="uid://bao41mrxh6j5x" path="res://map_reference/Screenshot 2026-07-03 171314.png" id="1_ke45b"]
+[ext_resource type="Texture2D" uid="uid://w3b0lp03nb3h" path="res://map_reference/new_map_ref.png" id="1_ke45b"]
 
 [node name="MapReference" type="Node2D" unique_id=817823397]
 position = Vector2(-4, 56)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1678730434]
 texture_filter = 1
-position = Vector2(940, 771)
+position = Vector2(184.3, 24.8)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_ke45b")

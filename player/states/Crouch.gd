@@ -9,7 +9,10 @@ func init() -> void:
 # what happens when enter this state
 func enter() -> void:
 	player.animation_player.play("Crouch")
-	player.collision_stand.disabled = true	
+	if player.previous_state == attack:
+		# back from a crouch attack: already down, skip the crouching-down motion
+		player.animation_player.seek( player.animation_player.current_animation_length, true )
+	player.collision_stand.disabled = true
 	player.collision_crouch.disabled = false
 	player.da_stand.disabled = true	
 	player.da_crouch.disabled = false

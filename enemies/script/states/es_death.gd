@@ -25,9 +25,6 @@ func enter() -> void:
 	_calc_velocity( blackboard.damage_source )
 	blackboard.damage_source = null
 	blackboard.can_decide = false
-	
-	await enemy.animation.animation_finished
-	enemy.queue_free()
 	pass
 	
 func re_enter() -> void:
@@ -41,6 +38,8 @@ func physics_update( delta : float ) -> void:
 	enemy.velocity.x = vel_x * ( 1 - timer / duration )
 	if timer >= duration:
 		blackboard.can_decide = true
+		# timer instead of awaiting animation_finished, same as ESAttackExplode
+		enemy.queue_free()
 	pass
 	
 func	_calc_velocity( a : AttackArea ) -> void:

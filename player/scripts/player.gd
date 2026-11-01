@@ -74,7 +74,9 @@ var direction_locked : bool = false
 
 func _ready() -> void:
 	if get_tree().get_first_node_in_group( "Player" ) != self:
+		# a PlayerSpawn in every room makes a copy; stop here so it never touches HUD or signals
 		self.queue_free()
+		return
 	initialize_states()
 	self.call_deferred("reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
@@ -90,14 +92,17 @@ func _unhandled_input(event: InputEvent) -> void:
 		velocity.y *= 0.5
 	if event.is_action_pressed( "action" ):
 		Messages.player_interacted.emit( self )
-	elif event.is_action_pressed("pause"):
+	elif event.is_action_pressed("pause") or event.is_action_pressed("map"):
+		get_viewport().set_input_as_handled()
 		get_tree().paused = true
 		var pause_menu : PauseMenu = load( "res://paused_menu/paused_menu.tscn" ).instantiate()  
 		add_child( pause_menu )
+		if event.is_action_pressed("map"):
+			pause_menu.open_map()
 		return
 		
-	# get rid later
-	if event is InputEventKey and event.pressed: 
+	# get rid later (debug builds only, so exported games never get these)
+	if OS.is_debug_build() and event is InputEventKey and event.pressed:
 		if event.keycode == KEY_MINUS:
 			if Input.is_key_pressed(KEY_SHIFT):
 				max_hp -= 10 

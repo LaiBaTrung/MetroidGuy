@@ -49,6 +49,10 @@ func can_attack() -> bool:
 	return false
 	
 func run_cooldown() -> void:
-	await  get_tree().create_timer( cooldown ).timeout
+	# connected (not awaited) so the callback is dropped if the enemy is freed first
+	get_tree().create_timer( cooldown ).timeout.connect( _end_cooldown )
+	pass
+
+func _end_cooldown() -> void:
 	on_cooldown = false
 	pass
