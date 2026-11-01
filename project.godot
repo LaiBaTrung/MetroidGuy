@@ -14,7 +14,6 @@ config/name="MetroidGuy"
 run/main_scene="uid://r432kmtahtq7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=100
-config/icon="uid://dlensa8cw3sqg"
 
 [audio]
 
