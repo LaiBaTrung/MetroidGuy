@@ -14,7 +14,6 @@ func init() -> void:
 
 # what happens when enter this state
 func enter() -> void:
-	player.ledge_grab_jump = true
 	player.dash_count = 0
 	player.animation_player.play( "ledge_grab" )
 	player.velocity = Vector2.ZERO
@@ -34,6 +33,8 @@ func exit() -> void:
 func handle_inputs( _event : InputEvent ) -> PlayerState:
 	if _event.is_action_pressed( "Jump" ):
 		player.velocity.x = -player.facing_direction * 120
+		# set only here: Jump.do_jump() consumes it at once, so dropping (Down) or a hit never leaves a free air jump
+		player.ledge_grab_jump = true
 		return jump
 	if _event.is_action_pressed( "Down" ):
 		grab_cooldown = Time.get_ticks_msec() + 300

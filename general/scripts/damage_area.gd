@@ -14,16 +14,35 @@ func take_damage( attack_area : AttackArea ) -> void:
 	pass
 	
 
+# invulnerable while any timed window runs or a start/end hold is on,
+# so one source ending (e.g. a hit timer mid ground slam) never cuts another short
+var _timed_windows : int = 0
+var _held : bool = false
+
+
 func make_invulnerable( duration : float = 1.0 ) -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED
+	_timed_windows += 1
+	_update_invulnerable()
 	await get_tree().create_timer( duration ).timeout
-	process_mode = Node.PROCESS_MODE_INHERIT
+	_timed_windows -= 1
+	assert( _timed_windows >= 0, "DamageArea: more invulnerable windows ended than started" )
+	_update_invulnerable()
 	pass
 
 func start_invulnerable() -> void:
-	process_mode = Node.PROCESS_MODE_DISABLED
+	_held = true
+	_update_invulnerable()
 	pass
-	
+
 func end_invulnerable() -> void:
-	process_mode = Node.PROCESS_MODE_INHERIT
+	_held = false
+	_update_invulnerable()
+	pass
+
+
+func _update_invulnerable() -> void:
+	if _held or _timed_windows > 0:
+		process_mode = Node.PROCESS_MODE_DISABLED
+	else:
+		process_mode = Node.PROCESS_MODE_INHERIT
 	pass

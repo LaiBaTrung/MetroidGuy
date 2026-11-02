@@ -47,18 +47,30 @@ func _on_damage_taken(attack_area : AttackArea) -> void:
 		damage_taken.emit()
 		Audio.play_spatial_sound( hit_audio, pos )
 		for p in hit_particles:
-			VisualEffects.hit_particales( pos, dir, p ) 
-	else:
-		_destroy = true
-		destroyed.emit()
-		Audio.play_spatial_sound( destroy_audio, pos )
-		for p in destroy_particles:
 			VisualEffects.hit_particales( pos, dir, p )
-		clear_collision()
-		var tween : Tween = create_tween()
-		tween.tween_property( self, "modulate", Color( modulate, 0 ), 0.4  )
-		await tween.finished
-		queue_free()
+	else:
+		destroy( attack_area )
+	pass
+
+
+# breaks it at once, whatever hp is left (ground slam); still emits destroyed so loot / pickups react
+func destroy( attack_area : AttackArea ) -> void:
+	if _destroy:
+		return
+	_destroy = true
+	var pos : Vector2 = global_position + emssison_offset
+	var dir : Vector2 = Vector2( 1, -1 )
+	if attack_area.global_position.x > global_position.x:
+		dir.x *= -1
+	destroyed.emit()
+	Audio.play_spatial_sound( destroy_audio, pos )
+	for p in destroy_particles:
+		VisualEffects.hit_particales( pos, dir, p )
+	clear_collision()
+	var tween : Tween = create_tween()
+	tween.tween_property( self, "modulate", Color( modulate, 0 ), 0.4  )
+	await tween.finished
+	queue_free()
 	pass
 	
 	

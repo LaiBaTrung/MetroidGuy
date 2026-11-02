@@ -31,7 +31,7 @@ func _ready() -> void:
 	map_home_position = map.position
 	Audio.setup_button_audio( self )
 	set_up_system_menu()
-	var player : Node2D = get_tree().get_first_node_in_group( "player" )
+	var player : Node2D = get_tree().get_first_node_in_group( "Player" )
 	if player:
 		player_position = player.global_position
 	pass
