@@ -66,7 +66,8 @@ func handle_inputs( _event : InputEvent ) -> PlayerState:
 		timer = combo_time_window
 	if _event.is_action_pressed( "dash" ) and player.can_dash():
 		return dash
-	if _event.is_action_pressed( "Jump" ) and player.is_on_floor():
+	# in the air only the double jump can cancel an attack (jump_count == 1: first jump used, second free)
+	if _event.is_action_pressed( "Jump" ) and ( player.is_on_floor() or ( player.double_jump and player.jump_count == 1 ) ):
 		return jump
 	if _event.is_action_pressed( "action" ) and player.can_morph():
 		return morph_roll

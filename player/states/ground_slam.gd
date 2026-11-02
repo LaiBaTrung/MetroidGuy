@@ -87,11 +87,9 @@ func check_collisions( _delta : float ) -> bool:
 			VisualEffects.camera_shake( 10.0 )
 			
 			if c.get_parent() is Breakable:
+				# destroy() plays its own audio/particles and emits destroyed (loot, ability pickups)
 				var b : Breakable = c.get_parent()
-				b.queue_free()
-				Audio.play_spatial_sound( b.destroy_audio, pos, false, true, 0.75 )
-				for p in b.destroy_particles: 
-					VisualEffects.hit_particales( pos, Vector2.DOWN, p)
+				b.destroy( ground_slam_attack_area )
 			else:
 				c.queue_free()
 				VisualEffects.hit_particales( pos, Vector2.DOWN, HIT_WOOD_LARGE)

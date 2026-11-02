@@ -23,6 +23,9 @@ func enter() -> void:
 	# if it is, handle jump button release 
 	if player.previous_state == fall and not Input.is_action_pressed( "Jump" ):
 		await get_tree().physics_frame
+		# a dash/attack/hit in that frame already moved on; don't yank it back to fall
+		if not is_instance_valid( player ) or player.current_state != self:
+			return
 		player.velocity.y *= 0.5
 		player.change_state( fall )
 		pass

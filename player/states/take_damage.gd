@@ -21,10 +21,7 @@ func init() -> void:
 func enter() -> void:
 	player.animation_player.play( "take_damage" )
 	time = player.animation_player.current_animation_length
-	damage_area.make_invulnerable( invulnerable_duration )
-	Audio.play_spatial_sound( HURT_AUDIO, player.global_position, false, true, 0.5 )
-	player.sprite.tween_color(0.2, Color.RED)
-	VisualEffects.camera_shake(2)
+	_play_hit_feedback()
 	pass
 	
 	
@@ -60,9 +57,22 @@ func physics_process(_delta: float) -> PlayerState:
 func _on_damage_taken(attack_area : AttackArea) -> void:
 	if player.current_state == death:
 		return
+	# hp is still the pre-hit value here (this runs before player.gd subtracts it)
+	if player.current_state == morph_roll and not morph_roll._can_stand() and player.hp > attack_area.damage:
+		# standing up in a low tunnel would embed the player: take the hit as a ball
+		_play_hit_feedback()
+		return
 	player.change_state( self )
 	if attack_area.global_position.x < player.global_position.x:
 		dir = 1.0
 	else:
 		dir = -1.0
+	pass
+
+
+func _play_hit_feedback() -> void:
+	damage_area.make_invulnerable( invulnerable_duration )
+	Audio.play_spatial_sound( HURT_AUDIO, player.global_position, false, true, 0.5 )
+	player.sprite.tween_color(0.2, Color.RED)
+	VisualEffects.camera_shake(2)
 	pass
