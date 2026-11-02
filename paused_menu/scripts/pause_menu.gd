@@ -14,7 +14,8 @@ class_name PauseMenu
 @onready var player_indicator: Control = %PlayerIndicator
 #endregion
 
-const ZOOM_MIN : float = 0.5
+# 1.0: the game renders at 500x260 (stretch "viewport"), so below 1x the 1 px map lines break up
+const ZOOM_MIN : float = 1.0
 const ZOOM_MAX : float = 2.5
 const ZOOM_STEP : float = 0.1
 const PAN_SPEED : float = 150
