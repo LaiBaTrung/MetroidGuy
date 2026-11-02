@@ -34,7 +34,7 @@ window/size/viewport_width=500
 window/size/viewport_height=260
 window/size/window_width_override=1440
 window/size/window_height_override=810
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
 [editor]
