@@ -3,8 +3,10 @@
 [ext_resource type="TileSet" uid="uid://sgeohjjkq6tt" path="res://level/tilesets/forgotten_forest.tres" id="2_alqqx"]
 [ext_resource type="Script" uid="uid://ciyjpq2blrphq" path="res://general/scripts/level_bounds.gd" id="3_alqqx"]
 [ext_resource type="PackedScene" uid="uid://b8g25bpollo1b" path="res://level/props/plant.tscn" id="4_aycm6"]
+[ext_resource type="PackedScene" uid="uid://dja552eqnk17n" path="res://enemies/slime_2/slime_2.tscn" id="4_dvgh2"]
 [ext_resource type="PackedScene" uid="uid://cibk26suju56s" path="res://general/level_transition/level_transition.tscn" id="4_wkws7"]
 [ext_resource type="PackedScene" uid="uid://bfxw2j4m1d555" path="res://level/props/torch.tscn" id="5_aycm6"]
+[ext_resource type="Script" uid="uid://p7dr1cvtlxii" path="res://enemies/script/patrol_limit.gd" id="5_mvy4b"]
 [ext_resource type="Texture2D" uid="uid://cp2y3kj7cvwfb" path="res://level/tilesets/sprites/light_stream.jpg" id="6_0c5db"]
 [ext_resource type="Material" uid="uid://0g1j8m4ld53g" path="res://materials_shaders/fog_fade_material.tres" id="7_bmx1x"]
 [ext_resource type="PackedScene" uid="uid://dtwggfes4k3t1" path="res://general/player_spawn/player_spawn.tscn" id="8_5bo58"]
@@ -268,6 +270,14 @@ speed_scale = 0.7
 [node name="Torch4" parent="Props_front" unique_id=2086908804 instance=ExtResource("5_aycm6")]
 position = Vector2(1440, 103)
 speed_scale = 0.9
+
+[node name="Slime2" parent="." unique_id=1082561769 instance=ExtResource("4_dvgh2")]
+position = Vector2(1330, 196)
+
+[node name="PatrolLimit" type="Node2D" parent="Slime2" unique_id=1227981635]
+position = Vector2(290, -2)
+script = ExtResource("5_mvy4b")
+side = 2
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=1634862593]
 z_index = 256

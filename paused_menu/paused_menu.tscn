@@ -162,7 +162,7 @@ offset_top = 85.0
 offset_right = 104.0
 offset_bottom = 94.0
 linked_scene = "uid://btcwhntbwjve"
-entrances_right = Array[float]([2.275])
+entrances_right = Array[float]([2.375])
 entrances_bottom = Array[float]([15.225])
 entrances_left = Array[float]([3.0749998])
 
@@ -229,7 +229,7 @@ offset_top = 83.0
 offset_right = 169.0
 offset_bottom = 92.0
 linked_scene = "uid://i38csc8gmep5"
-entrances_left = Array[float]([4.475])
+entrances_left = Array[float]([4.0])
 
 [node name="MapNode9" parent="PausedScreen/Map" unique_id=1142435988 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)

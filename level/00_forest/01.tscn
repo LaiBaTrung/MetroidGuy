@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://sgeohjjkq6tt" path="res://level/tilesets/forgotten_forest.tres" id="1_tqtc3"]
 [ext_resource type="Script" uid="uid://ciyjpq2blrphq" path="res://general/scripts/level_bounds.gd" id="3_e37rk"]
 [ext_resource type="PackedScene" uid="uid://cibk26suju56s" path="res://general/level_transition/level_transition.tscn" id="4_sstrf"]
+[ext_resource type="PackedScene" uid="uid://dja552eqnk17n" path="res://enemies/slime_2/slime_2.tscn" id="5_ltmi2"]
 [ext_resource type="PackedScene" uid="uid://b8g25bpollo1b" path="res://level/props/plant.tscn" id="5_o5tm3"]
 [ext_resource type="Texture2D" uid="uid://cp2y3kj7cvwfb" path="res://level/tilesets/sprites/light_stream.jpg" id="6_eh61h"]
 [ext_resource type="PackedScene" uid="uid://dtwggfes4k3t1" path="res://general/player_spawn/player_spawn.tscn" id="7_e4h0q"]
@@ -255,6 +256,12 @@ flip_h = true
 
 [node name="Plant8" parent="Props/Props_front" unique_id=100764915 instance=ExtResource("5_o5tm3")]
 position = Vector2(1607, 263)
+
+[node name="Slime2" parent="." unique_id=1082561769 instance=ExtResource("5_ltmi2")]
+position = Vector2(880, 245)
+
+[node name="Slime3" parent="." unique_id=365147552 instance=ExtResource("5_ltmi2")]
+position = Vector2(1200, 277)
 
 [node name="LightStream_Parallax" type="Node2D" parent="." unique_id=1007103032]
 position = Vector2(0, 49.75)
