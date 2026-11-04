@@ -107,8 +107,9 @@ func set_up_player()-> void:
 		player = get_tree().get_first_node_in_group( "Player" )
 		await get_tree().process_frame
 	
+	# max_hp first: the hp setter clamps to the current max_hp, so a saved hp above 20 was cut to 20
+	player.max_hp = save_data.get( "max_hp", 20 )
 	player.hp = save_data.get( "hp", 20 )
-	player.max_hp = save_data.get( "max_hp", 20 )	
 	player.dash = save_data.get( "dash", false )
 	player.double_jump = save_data.get( "double_jump", false )
 	player.ground_slam = save_data.get( "ground_slam", false )
