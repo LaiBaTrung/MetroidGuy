@@ -15,9 +15,9 @@ func _ready() -> void:
 func flicker() -> void:
 	var new_value : float = randf_range(-1, 1) * flicker_itensity
 	energy = og_energy + new_value
-	await get_tree().create_timer( 
-		flicker_frequency + 
+	# connect, not await: a torch freed mid-await left its suspended call behind (one object per torch per room unload)
+	get_tree().create_timer(
+		flicker_frequency +
 		randf_range( flicker_frequency * -0.3, flicker_frequency * 0.3 )
-		).timeout
-	flicker()
+		).timeout.connect( flicker )
 	pass
