@@ -27,6 +27,7 @@ Messages="*uid://bllhiixv81cxy"
 PlayerHud="*uid://bdvhiqeqgao2"
 Audio="*uid://bjwclvs35c2ba"
 VisualEffects="*uid://cx3xbr8qu1r33"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -35,12 +36,15 @@ window/size/viewport_height=260
 window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="viewport"
-window/vsync/vsync_mode=0
 
 [editor]
 
 movie_writer/movie_file="D:/GameDev/MetroidvaniaDev/metroid-guy/DevLog/Devlog1.avi"
 movie_writer/disable_vsync=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 [global_group]
 
@@ -149,3 +153,5 @@ map={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+viewport/hdr_2d=true
+2d/snap/snap_2d_transforms_to_pixel=true

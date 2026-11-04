@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c40utgd3n68i7" path="res://general/door_and_switch/switch.tscn" id="7_qebcc"]
 [ext_resource type="Script" uid="uid://dkpp1xlfodtb8" path="res://music/music_auto_trigger.gd" id="8_r173h"]
 [ext_resource type="AudioStream" uid="uid://biex8455ggvna" path="res://music/forest_01.ogg" id="9_8xfsx"]
+[ext_resource type="PackedScene" uid="uid://wa8ot485ira7" path="res://general/ability_pickup/ability_pickup.tscn" id="10_cwlku"]
+[ext_resource type="PackedScene" uid="uid://dja552eqnk17n" path="res://enemies/slime_2/slime_2.tscn" id="11_lw0ah"]
 
 [node name="04" type="Node2D" unique_id=424087560]
 position = Vector2(0, 85)
@@ -36,7 +38,7 @@ tile_map_data = PackedByteArray("AAAAAAcAAAABAAgAAAAAAAgAAAABAAEAAAABAAcAAAACAAA
 tile_set = ExtResource("1_y0ina")
 
 [node name="PlayerSpawn" parent="." unique_id=450844790 instance=ExtResource("2_rqgc1")]
-position = Vector2(385, 180)
+position = Vector2(383, 180)
 
 [node name="LevelBounds" type="Node2D" parent="." unique_id=139108381]
 z_index = 256
@@ -78,3 +80,10 @@ position = Vector2(-50, 6)
 script = ExtResource("8_r173h")
 track = ExtResource("9_8xfsx")
 metadata/_custom_type_script = "uid://dkpp1xlfodtb8"
+
+[node name="AbilityPickupDash" parent="." unique_id=1925568589 instance=ExtResource("10_cwlku")]
+position = Vector2(1880, 190)
+type = 1
+
+[node name="Slime2" parent="." unique_id=1082561769 instance=ExtResource("11_lw0ah")]
+position = Vector2(1300, 228)

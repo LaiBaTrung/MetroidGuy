@@ -44,3 +44,19 @@ func hit_particales( pos : Vector2, dir : Vector2 ,settings : HitParticleSetting
 func camera_shake( strength : float = 1.0 ) -> void:
 	camera_shook.emit( strength )
 	pass
+
+
+# brief near-freeze on a hit; timed in real seconds (ignores time_scale) so it always ends,
+# and counted so an overlapping hit never ends another one early
+const HIT_STOP_TIME_SCALE : float = 0.0
+var _hit_stops : int = 0
+
+func hit_stop( duration : float = 0.05 ) -> void:
+	_hit_stops += 1
+	Engine.time_scale = HIT_STOP_TIME_SCALE
+	await get_tree().create_timer( duration, true, false, true ).timeout
+	_hit_stops -= 1
+	assert( _hit_stops >= 0, "VisualEffects: more hit stops ended than started" )
+	if _hit_stops == 0:
+		Engine.time_scale = 1.0
+	pass

@@ -50,7 +50,6 @@ func transition_scene(
 		get_tree().change_scene_to_file( new_scene )
 
 	current_scene_uid = ResourceUID.path_to_uid( new_scene )
-	print ("current_scene", current_scene_uid)
 	scene_entered.emit( current_scene_uid )
 	
 	await get_tree().scene_changed

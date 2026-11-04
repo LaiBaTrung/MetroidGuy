@@ -3,10 +3,13 @@ extends EnemyState
 
 
 @export var knockback_strength : float = 100
+## after a stun ends, hits still hurt but do not stun again for this long (no stun-lock)
+@export var stun_immunity : float = 0.6
 
 var vel_x : float = 0
 var duration : float = 0
 var timer : float = 0
+var _immune_until : int = 0
 
 func start() -> void:
 	var anim : String = animation_name if animation_name else "stun"
@@ -26,13 +29,21 @@ func enter() -> void:
 	
 	pass
 	
+# a hit while already stunned still hurts and pushes, but no longer restarts the stun:
+# restarting it on every combo hit kept the enemy stunned for as long as the player kept swinging
 func re_enter() -> void:
-	start()
+	_calc_velocity( blackboard.damage_source )
+	blackboard.damage_source = null
 	pass
 
 func exit() -> void:
 	blackboard.can_decide = true
+	_immune_until = Time.get_ticks_msec() + int( stun_immunity * 1000.0 )
 	pass
+
+
+func can_stun() -> bool:
+	return Time.get_ticks_msec() >= _immune_until
 
 func physics_update( delta : float ) -> void:
 	timer += delta

@@ -21,13 +21,20 @@ func decide() -> EnemyState:
 	if blackboard.damage_source:
 		if blackboard.health <= 0:
 			return es_death
-		else:
+		elif es_stun.can_stun():
 			return es_stun
+		# stun immunity: the hit still hurt (health is already down), carry on deciding
+		blackboard.damage_source = null
 			
 	if current_state is ESDeath or not blackboard.can_decide:
 		return null
 	
 	if blackboard.edge_detected:
 		enemy.change_dir( -blackboard.dir )
-		
+
+	# ESWalk stops at a PatrolLimit; turn back like at a ledge instead of standing there for good
+	if blackboard.hit_patrol_limit:
+		blackboard.hit_patrol_limit = false
+		enemy.change_dir( -blackboard.dir )
+
 	return es_walk

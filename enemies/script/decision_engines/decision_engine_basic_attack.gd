@@ -18,8 +18,10 @@ func decide() -> EnemyState:
 	if blackboard.damage_source:
 		if blackboard.health <= 0:
 			return es_death
-		else:
+		elif es_stun.can_stun():
 			return es_stun
+		# stun immunity: the hit still hurt (health is already down), carry on deciding
+		blackboard.damage_source = null
 			
 	if current_state is ESDeath or not blackboard.can_decide:
 		return null
