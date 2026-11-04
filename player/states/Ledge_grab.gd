@@ -24,7 +24,7 @@ func enter() -> void:
 	
 # what happens when exit this state
 func exit() -> void:
-	player.gravity_multiplier = 1.0
+	player.gravity_multiplier = fall.fall_gravity_multiplier
 	player.direction_locked = false
 	pass 
 	
