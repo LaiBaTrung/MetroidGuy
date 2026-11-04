@@ -37,8 +37,8 @@ func enter() -> void:
 	
 # what happens when exit this state
 func exit() -> void:
-	player.gravity_multiplier = 1.0
-	pass 
+	player.gravity_multiplier = fall.fall_gravity_multiplier
+	pass
 	
 	
 # handle what happens when an input is pressed 

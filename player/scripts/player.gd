@@ -77,6 +77,8 @@ func _ready() -> void:
 		# a PlayerSpawn in every room makes a copy; stop here so it never touches HUD or signals
 		self.queue_free()
 		return
+	# one airborne gravity everywhere (Fall's): the levels are built for the 97 px jump it gives
+	gravity_multiplier = fall.fall_gravity_multiplier
 	initialize_states()
 	self.call_deferred("reparent", get_tree().root )
 	Messages.player_healed.connect( _on_player_healed )
