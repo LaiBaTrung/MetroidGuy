@@ -171,8 +171,8 @@ func view_center() -> Vector2:
 	return paused_screen.size / 2
 
 
-func pan_map( _offset : Vector2 ) -> void:
-	map.position += offset
+func pan_map( amount : Vector2 ) -> void:
+	map.position += amount
 	clamp_map()
 	pass
 
