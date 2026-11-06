@@ -130,4 +130,5 @@ texture = SubResource("GradientTexture2D_n0b25")
 [node name="MusicAutoTrigger" type="Node" parent="." unique_id=738285909]
 script = ExtResource("7_l5fgu")
 track = ExtResource("8_t5xdy")
+reverb = 3
 metadata/_custom_type_script = "uid://dkpp1xlfodtb8"
