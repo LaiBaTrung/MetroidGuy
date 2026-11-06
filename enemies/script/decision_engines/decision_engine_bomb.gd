@@ -3,6 +3,7 @@ extends DecisionEngine
 
 # Decision engine for the Bomb Monster.
 # Same flow as DecisionEngineBasicAttack (LivingArmor):
+#   exploding -> keep exploding (hits hurt but do not stun); a killing hit defuses it
 #   hit -> stun / death
 #   patrol limit -> idle
 #   target found by PlayerSensor (collision shape or audio value):
@@ -26,6 +27,15 @@ func _ready() -> void:
 
 
 func decide() -> EnemyState:
+	# once the fuse is lit the bomb is committed: a hit that does not kill it still costs
+	# health but no longer stuns it, so it cannot be reset mid-fuse or survive its own
+	# explosion. Killing it defuses it. ESAttackExplode frees the enemy when the attack ends.
+	if current_state == es_attack:
+		if blackboard.damage_source and blackboard.health <= 0:
+			return es_death
+		blackboard.damage_source = null
+		return null
+
 	# got hit
 	if blackboard.damage_source:
 		if blackboard.health <= 0:
