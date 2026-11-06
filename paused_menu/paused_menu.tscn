@@ -1,12 +1,41 @@
 [gd_scene format=3 uid="uid://c5qld2omwtlih"]
 
 [ext_resource type="Script" uid="uid://bfu3f868mkn5w" path="res://paused_menu/scripts/pause_menu.gd" id="1_eppgf"]
+[ext_resource type="Theme" uid="uid://2fulanknidqy" path="res://paused_menu/book_theme.tres" id="2_bvjg8"]
 [ext_resource type="PackedScene" uid="uid://canqidspcxbnv" path="res://paused_menu/map_node.tscn" id="2_i6ckp"]
 [ext_resource type="Script" uid="uid://e8bfyh2bs600" path="res://paused_menu/scripts/abilities_list.gd" id="3_c2t11"]
+[ext_resource type="Texture2D" uid="uid://cfq67ep7fkwma" path="res://paused_menu/sprites/book_cover.png" id="3_xhnpc"]
 [ext_resource type="Texture2D" uid="uid://detl6bsecc5k8" path="res://player/sprites/abilities.png" id="4_3hkn6"]
+[ext_resource type="Texture2D" uid="uid://ek5pitu18sgd" path="res://paused_menu/sprites/book_page_left.png" id="4_ojis6"]
+[ext_resource type="Texture2D" uid="uid://hujn6rygvdkr" path="res://paused_menu/sprites/book_page_right.png" id="5_66myt"]
+[ext_resource type="Texture2D" uid="uid://becbadi7kaom7" path="res://paused_menu/sprites/ornament_corner.png" id="6_ugm75"]
+[ext_resource type="Texture2D" uid="uid://bbdfvjhmmsrwv" path="res://paused_menu/sprites/sketch_emblem.png" id="7_5cfxt"]
+[ext_resource type="Texture2D" uid="uid://d3wch8qyfxdrj" path="res://paused_menu/sprites/ornament_flourish.png" id="8_3nfuo"]
+[ext_resource type="Texture2D" uid="uid://da3mnb0ne0fqc" path="res://paused_menu/sprites/bookmark.png" id="9_75yu1"]
+[ext_resource type="Texture2D" uid="uid://eqj61kpfkv8" path="res://paused_menu/sprites/tab_point.png" id="10_46loh"]
+[ext_resource type="Texture2D" uid="uid://dae17mvfapsac" path="res://paused_menu/sprites/portrait_frame.png" id="11_01xx3"]
+[ext_resource type="Texture2D" uid="uid://by2j3pfrmuob7" path="res://player/sprites/hero1.png" id="12_6mmu0"]
+[ext_resource type="Texture2D" uid="uid://cuy0gwaejn8qa" path="res://paused_menu/sprites/sketch_castle.png" id="16_ifxvv"]
 
-[sub_resource type="FontVariation" id="FontVariation_eppgf"]
-spacing_glyph = 6
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlai4"]
+atlas = ExtResource("12_6mmu0")
+region = Rect2(23, 23, 28, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkefl"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(104, 41, 16, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nshl5"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(133, 8, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15jb5"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(75, 64, 10, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpyw6"]
+atlas = ExtResource("4_3hkn6")
+region = Rect2(101, 101, 21, 21)
 
 [sub_resource type="Gradient" id="Gradient_i6ckp"]
 offsets = PackedFloat32Array(0, 0.5144628, 1)
@@ -58,26 +87,6 @@ _data = {
 &"default": SubResource("Animation_c2t11")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bkefl"]
-atlas = ExtResource("4_3hkn6")
-region = Rect2(104, 41, 16, 18)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nshl5"]
-atlas = ExtResource("4_3hkn6")
-region = Rect2(133, 8, 18, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_15jb5"]
-atlas = ExtResource("4_3hkn6")
-region = Rect2(75, 64, 10, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpyw6"]
-atlas = ExtResource("4_3hkn6")
-region = Rect2(101, 101, 21, 21)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qutg7"]
-line_spacing = 2.0
-font_size = 12
-
 [node name="PauseMenu" type="CanvasLayer" unique_id=1909841971]
 process_mode = 3
 script = ExtResource("1_eppgf")
@@ -97,45 +106,510 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.78431374)
+color = Color(0.05882353, 0.047058824, 0.078431375, 0.8509804)
 
-[node name="ColorRect2" type="ColorRect" parent="Control" unique_id=1518636821]
-custom_minimum_size = Vector2(0, 36)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="Control/ColorRect2" unique_id=396052001]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -74.0
-offset_top = -7.5
-offset_right = -16.0
-offset_bottom = 7.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.5736569, 0.15101258, 0.1726614, 1)
-theme_override_fonts/font = SubResource("FontVariation_eppgf")
-text = "PAUSED"
-
-[node name="PausedScreen" type="Control" parent="." unique_id=1154607725]
-unique_name_in_owner = true
-clip_contents = true
+[node name="Book" type="Control" parent="." unique_id=981741664]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_bvjg8")
+
+[node name="Cover" type="NinePatchRect" parent="Book" unique_id=121098222]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 26.0
+offset_right = 488.0
+offset_bottom = 238.0
+texture = ExtResource("3_xhnpc")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="PageLeft" type="NinePatchRect" parent="Book" unique_id=881696196]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 34.0
+offset_right = 248.0
+offset_bottom = 231.0
+texture = ExtResource("4_ojis6")
+patch_margin_left = 4
+patch_margin_top = 3
+patch_margin_right = 13
+patch_margin_bottom = 4
+
+[node name="PageRight" type="NinePatchRect" parent="Book" unique_id=1686213198]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 34.0
+offset_right = 476.0
+offset_bottom = 231.0
+texture = ExtResource("5_66myt")
+patch_margin_left = 13
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Gutter" type="ColorRect" parent="Book" unique_id=1232869170]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 32.0
+offset_right = 252.0
+offset_bottom = 232.0
+mouse_filter = 2
+color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+
+[node name="Decor" type="Control" parent="Book" unique_id=1071407940]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="CornerTL" type="TextureRect" parent="Book/Decor" unique_id=1215741765]
+modulate = Color(1, 1, 1, 0.7019608)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 38.0
+offset_right = 28.0
+offset_bottom = 38.0
+mouse_filter = 2
+texture = ExtResource("6_ugm75")
+
+[node name="CornerBL" type="TextureRect" parent="Book/Decor" unique_id=160275998]
+modulate = Color(1, 1, 1, 0.7019608)
+layout_mode = 0
+offset_left = 28.0
+offset_top = 218.0
+offset_right = 28.0
+offset_bottom = 218.0
+mouse_filter = 2
+texture = ExtResource("6_ugm75")
+flip_v = true
+
+[node name="CornerTR" type="TextureRect" parent="Book/Decor" unique_id=1241528202]
+modulate = Color(1, 1, 1, 0.7019608)
+layout_mode = 0
+offset_left = 463.0
+offset_top = 38.0
+offset_right = 463.0
+offset_bottom = 38.0
+mouse_filter = 2
+texture = ExtResource("6_ugm75")
+flip_h = true
+
+[node name="CornerBR" type="TextureRect" parent="Book/Decor" unique_id=1710970917]
+modulate = Color(1, 1, 1, 0.7019608)
+layout_mode = 0
+offset_left = 463.0
+offset_top = 218.0
+offset_right = 463.0
+offset_bottom = 218.0
+mouse_filter = 2
+texture = ExtResource("6_ugm75")
+flip_h = true
+flip_v = true
+
+[node name="Emblem" type="TextureRect" parent="Book/Decor" unique_id=659105452]
+modulate = Color(1, 1, 1, 0.3019608)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 38.0
+offset_right = 440.0
+offset_bottom = 38.0
+mouse_filter = 2
+texture = ExtResource("7_5cfxt")
+
+[node name="DividerTopLeft" type="Control" parent="Book/Decor" unique_id=1215519114]
+anchors_preset = 0
+offset_left = 38.0
+offset_top = 58.0
+offset_right = 234.0
+offset_bottom = 63.0
+mouse_filter = 2
+
+[node name="Line" type="ColorRect" parent="Book/Decor/DividerTopLeft" unique_id=557389900]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 196.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(0.56078434, 0.4862745, 0.3529412, 1)
+
+[node name="Flourish" type="TextureRect" parent="Book/Decor/DividerTopLeft" unique_id=296285922]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 92.0
+mouse_filter = 2
+texture = ExtResource("8_3nfuo")
+
+[node name="DividerTopRight" type="Control" parent="Book/Decor" unique_id=1213829697]
+anchors_preset = 0
+offset_left = 266.0
+offset_top = 58.0
+offset_right = 464.0
+offset_bottom = 63.0
+mouse_filter = 2
+
+[node name="Line" type="ColorRect" parent="Book/Decor/DividerTopRight" unique_id=1772159231]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 198.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(0.56078434, 0.4862745, 0.3529412, 1)
+
+[node name="Flourish" type="TextureRect" parent="Book/Decor/DividerTopRight" unique_id=1386460624]
+layout_mode = 0
+offset_left = 93.0
+offset_right = 93.0
+mouse_filter = 2
+texture = ExtResource("8_3nfuo")
+
+[node name="DividerBottomLeft" type="Control" parent="Book/Decor" unique_id=1957565933]
+anchors_preset = 0
+offset_left = 38.0
+offset_top = 196.0
+offset_right = 234.0
+offset_bottom = 201.0
+mouse_filter = 2
+
+[node name="Line" type="ColorRect" parent="Book/Decor/DividerBottomLeft" unique_id=1518457548]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 196.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(0.56078434, 0.4862745, 0.3529412, 1)
+
+[node name="Flourish" type="TextureRect" parent="Book/Decor/DividerBottomLeft" unique_id=223229862]
+layout_mode = 0
+offset_left = 92.0
+offset_right = 92.0
+mouse_filter = 2
+texture = ExtResource("8_3nfuo")
+
+[node name="Bookmark" type="TextureRect" parent="Book/Decor" unique_id=1460542291]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 224.0
+offset_right = 244.0
+offset_bottom = 224.0
+mouse_filter = 2
+texture = ExtResource("9_75yu1")
+
+[node name="AbilitiesTab" type="Control" parent="Book" unique_id=308258678]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TitleLeft" type="Label" parent="Book/AbilitiesTab" unique_id=1245594772]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 40.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "The Unwritten"
+
+[node name="TitleRight" type="Label" parent="Book/AbilitiesTab" unique_id=2075944193]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 38.0
+offset_right = 268.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Abilities"
+
+[node name="PortraitFrame" type="NinePatchRect" parent="Book/AbilitiesTab" unique_id=1391072112]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 68.0
+offset_right = 80.0
+offset_bottom = 140.0
+texture = ExtResource("11_01xx3")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Portrait" type="TextureRect" parent="Book/AbilitiesTab" unique_id=881748322]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 76.0
+offset_right = 46.0
+offset_bottom = 76.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wlai4")
+
+[node name="HealthLabel" type="Label" parent="Book/AbilitiesTab" unique_id=1109918522]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 66.0
+offset_right = 88.0
+offset_bottom = 66.0
+text = "Health"
+
+[node name="HeartRow" type="HBoxContainer" parent="Book/AbilitiesTab" unique_id=1689251645]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 85.0
+offset_top = 83.0
+offset_right = 235.0
+offset_bottom = 95.0
+mouse_filter = 2
+theme_override_constants/separation = -3
+
+[node name="HPValue" type="Label" parent="Book/AbilitiesTab" unique_id=1922545562]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 88.0
+offset_top = 98.0
+offset_right = 88.0
+offset_bottom = 98.0
+text = "20 / 20"
+
+[node name="HeartsLabel" type="Label" parent="Book/AbilitiesTab" unique_id=1743453338]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 120.0
+offset_right = 88.0
+offset_bottom = 120.0
+text = "Hearts"
+
+[node name="HeartsValue" type="Label" parent="Book/AbilitiesTab" unique_id=1618301633]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 150.0
+offset_top = 120.0
+offset_right = 150.0
+offset_bottom = 120.0
+text = "0 / 4"
+
+[node name="PagesLabel" type="Label" parent="Book/AbilitiesTab" unique_id=2004401854]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 146.0
+offset_right = 40.0
+offset_bottom = 146.0
+text = "Pages"
+
+[node name="PagesValue" type="Label" parent="Book/AbilitiesTab" unique_id=2130140953]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 146.0
+offset_right = 120.0
+offset_bottom = 146.0
+text = "0 / 12"
+
+[node name="RegionLabel" type="Label" parent="Book/AbilitiesTab" unique_id=219323415]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 162.0
+offset_right = 40.0
+offset_bottom = 162.0
+text = "Region"
+
+[node name="RegionValue" type="Label" parent="Book/AbilitiesTab" unique_id=1639067791]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 162.0
+offset_right = 120.0
+offset_bottom = 162.0
+text = "Undercroft"
+
+[node name="ExploredLabel" type="Label" parent="Book/AbilitiesTab" unique_id=260968502]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 178.0
+offset_right = 40.0
+offset_bottom = 178.0
+text = "Explored"
+
+[node name="ExploredValue" type="Label" parent="Book/AbilitiesTab" unique_id=2023182417]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 120.0
+offset_top = 178.0
+offset_right = 120.0
+offset_bottom = 178.0
+text = "0 / 0 rooms"
+
+[node name="LastSaveLabel" type="Label" parent="Book/AbilitiesTab" unique_id=665483871]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 204.0
+offset_right = 40.0
+offset_bottom = 204.0
+text = "Last save: -"
+
+[node name="DividerBottomRight" type="Control" parent="Book/AbilitiesTab" unique_id=163217911]
+anchors_preset = 0
+offset_left = 266.0
+offset_top = 172.0
+offset_right = 464.0
+offset_bottom = 177.0
+mouse_filter = 2
+
+[node name="Line" type="ColorRect" parent="Book/AbilitiesTab/DividerBottomRight" unique_id=196823199]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 198.0
+offset_bottom = 3.0
+mouse_filter = 2
+color = Color(0.56078434, 0.4862745, 0.3529412, 1)
+
+[node name="Flourish" type="TextureRect" parent="Book/AbilitiesTab/DividerBottomRight" unique_id=1222974734]
+layout_mode = 0
+offset_left = 93.0
+offset_right = 93.0
+mouse_filter = 2
+texture = ExtResource("8_3nfuo")
+
+[node name="AbilitiesList" type="VBoxContainer" parent="Book/AbilitiesTab" unique_id=1369675558]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 266.0
+offset_top = 64.0
+offset_right = 462.0
+offset_bottom = 211.0
+theme_override_constants/separation = 2
+script = ExtResource("3_c2t11")
+
+[node name="AbilityDoubleJump" type="Button" parent="Book/AbilitiesTab/AbilitiesList" unique_id=1657360278]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_bkefl")
+icon_alignment = 1
+
+[node name="AbilityDash" type="Button" parent="Book/AbilitiesTab/AbilitiesList" unique_id=398810751]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_nshl5")
+icon_alignment = 1
+
+[node name="AbilityGroundSlam" type="Button" parent="Book/AbilitiesTab/AbilitiesList" unique_id=1650969224]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_15jb5")
+icon_alignment = 1
+
+[node name="AbilityMorphRoll" type="Button" parent="Book/AbilitiesTab/AbilitiesList" unique_id=1867313067]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = SubResource("AtlasTexture_jpyw6")
+icon_alignment = 1
+
+[node name="AbilitiesDescription" type="Label" parent="Book/AbilitiesTab" unique_id=2060521237]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 268.0
+offset_top = 180.0
+offset_right = 462.0
+offset_bottom = 226.0
+autowrap_mode = 3
+
+[node name="MapTab" type="Control" parent="Book" unique_id=1198567093]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TitleLeft" type="Label" parent="Book/MapTab" unique_id=1933138165]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 40.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Map"
+
+[node name="RegionList" type="VBoxContainer" parent="Book/MapTab" unique_id=1595183466]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 66.0
+offset_right = 234.0
+offset_bottom = 126.0
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="MapExplored" type="Label" parent="Book/MapTab" unique_id=302576750]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 204.0
+offset_right = 40.0
+offset_bottom = 204.0
+text = "Explored 0 / 0"
+
+[node name="MapRegionTitle" type="Label" parent="Book/MapTab" unique_id=54169701]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 268.0
+offset_top = 38.0
+offset_right = 268.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Undercroft"
+
+[node name="MapFrame" type="NinePatchRect" parent="Book/MapTab" unique_id=1976048334]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 64.0
+offset_right = 464.0
+offset_bottom = 224.0
+texture = ExtResource("11_01xx3")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MapInset" type="ColorRect" parent="Book/MapTab" unique_id=1341502739]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 66.0
+offset_right = 462.0
+offset_bottom = 222.0
+mouse_filter = 2
+color = Color(0.08235294, 0.06666667, 0.10980392, 1)
+
+[node name="PausedScreen" type="Control" parent="Book/MapTab" unique_id=1154607725]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 266.0
+offset_top = 66.0
+offset_right = 462.0
+offset_bottom = 222.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Map" type="Control" parent="PausedScreen" unique_id=357840659]
+[node name="Map" type="Control" parent="Book/MapTab/PausedScreen" unique_id=357840659]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 136.0
@@ -144,7 +618,7 @@ offset_bottom = 177.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MapNode" parent="PausedScreen/Map" unique_id=840487397 instance=ExtResource("2_i6ckp")]
+[node name="MapNode" parent="Book/MapTab/PausedScreen/Map" unique_id=840487397 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.3137255, 0.7529412, 0.34117648, 1)
 layout_mode = 0
 offset_left = 15.0
@@ -154,7 +628,7 @@ offset_bottom = 93.0
 linked_scene = "uid://cdws5n7clorow"
 entrances_right = Array[float]([4.0])
 
-[node name="MapNode2" parent="PausedScreen/Map" unique_id=224339734 instance=ExtResource("2_i6ckp")]
+[node name="MapNode2" parent="Book/MapTab/PausedScreen/Map" unique_id=224339734 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.31292087, 0.75253814, 0.3399578, 1)
 layout_mode = 0
 offset_left = 60.0
@@ -166,7 +640,7 @@ entrances_right = Array[float]([2.375])
 entrances_bottom = Array[float]([15.225])
 entrances_left = Array[float]([3.0749998])
 
-[node name="MapNode3" parent="PausedScreen/Map" unique_id=57103937 instance=ExtResource("2_i6ckp")]
+[node name="MapNode3" parent="Book/MapTab/PausedScreen/Map" unique_id=57103937 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 71.0
@@ -177,7 +651,7 @@ linked_scene = "uid://ba0fjc2p0bcvr"
 entrances_top = Array[float]([3.6])
 entrances_right = Array[float]([3.0])
 
-[node name="MapNode4" parent="PausedScreen/Map" unique_id=1282090938 instance=ExtResource("2_i6ckp")]
+[node name="MapNode4" parent="Book/MapTab/PausedScreen/Map" unique_id=1282090938 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 100.0
@@ -188,7 +662,7 @@ linked_scene = "uid://cg65fjxwyekyd"
 entrances_right = Array[float]([4.175])
 entrances_left = Array[float]([5.8999996])
 
-[node name="MapNode5" parent="PausedScreen/Map" unique_id=1885727137 instance=ExtResource("2_i6ckp")]
+[node name="MapNode5" parent="Book/MapTab/PausedScreen/Map" unique_id=1885727137 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8901961, 0.88235295, 0.2, 1)
 layout_mode = 0
 offset_left = 152.0
@@ -199,7 +673,7 @@ linked_scene = "uid://2b0e771q7p6v"
 entrances_right = Array[float]([1.0])
 entrances_left = Array[float]([1.0])
 
-[node name="MapNode6" parent="PausedScreen/Map" unique_id=30385313 instance=ExtResource("2_i6ckp")]
+[node name="MapNode6" parent="Book/MapTab/PausedScreen/Map" unique_id=30385313 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 165.0
@@ -210,7 +684,7 @@ linked_scene = "uid://dm3l15q0v8ufv"
 entrances_right = Array[float]([3.4, 17.8, 32.2])
 entrances_left = Array[float]([3.3249998])
 
-[node name="MapNode7" parent="PausedScreen/Map" unique_id=489227485 instance=ExtResource("2_i6ckp")]
+[node name="MapNode7" parent="Book/MapTab/PausedScreen/Map" unique_id=489227485 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8901961, 0.88235295, 0.2, 1)
 layout_mode = 0
 offset_left = 105.0
@@ -221,7 +695,7 @@ linked_scene = "uid://c3w1wivagw4jd"
 entrances_right = Array[float]([1.0])
 entrances_left = Array[float]([1.0])
 
-[node name="MapNode8" parent="PausedScreen/Map" unique_id=120928616 instance=ExtResource("2_i6ckp")]
+[node name="MapNode8" parent="Book/MapTab/PausedScreen/Map" unique_id=120928616 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.3137255, 0.7529412, 0.34117648, 1)
 layout_mode = 0
 offset_left = 118.0
@@ -231,7 +705,7 @@ offset_bottom = 92.0
 linked_scene = "uid://i38csc8gmep5"
 entrances_left = Array[float]([4.0])
 
-[node name="MapNode9" parent="PausedScreen/Map" unique_id=1142435988 instance=ExtResource("2_i6ckp")]
+[node name="MapNode9" parent="Book/MapTab/PausedScreen/Map" unique_id=1142435988 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
 layout_mode = 0
 offset_left = 185.0
@@ -239,7 +713,7 @@ offset_top = 77.0
 offset_right = 217.0
 offset_bottom = 93.0
 
-[node name="MapNode10" parent="PausedScreen/Map" unique_id=668713142 instance=ExtResource("2_i6ckp")]
+[node name="MapNode10" parent="Book/MapTab/PausedScreen/Map" unique_id=668713142 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 185.0
@@ -249,7 +723,7 @@ offset_bottom = 106.0
 linked_scene = "uid://ic2iyhwyd1ld"
 entrances_left = Array[float]([7.3999996])
 
-[node name="MapNode11" parent="PausedScreen/Map" unique_id=254272665 instance=ExtResource("2_i6ckp")]
+[node name="MapNode11" parent="Book/MapTab/PausedScreen/Map" unique_id=254272665 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 185.0
@@ -260,7 +734,7 @@ linked_scene = "uid://bcr2ndenh7qdl"
 entrances_right = Array[float]([5.8])
 entrances_left = Array[float]([5.8])
 
-[node name="MapNode12" parent="PausedScreen/Map" unique_id=1227122873 instance=ExtResource("2_i6ckp")]
+[node name="MapNode12" parent="Book/MapTab/PausedScreen/Map" unique_id=1227122873 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 185.0
@@ -270,7 +744,7 @@ offset_bottom = 135.0
 linked_scene = "uid://d13j6kklrxw8i"
 entrances_left = Array[float]([8.2])
 
-[node name="MapNode13" parent="PausedScreen/Map" unique_id=442468404 instance=ExtResource("2_i6ckp")]
+[node name="MapNode13" parent="Book/MapTab/PausedScreen/Map" unique_id=442468404 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
 layout_mode = 0
 offset_left = 218.0
@@ -278,7 +752,7 @@ offset_top = 64.0
 offset_right = 235.0
 offset_bottom = 93.0
 
-[node name="MapNode14" parent="PausedScreen/Map" unique_id=1987308760 instance=ExtResource("2_i6ckp")]
+[node name="MapNode14" parent="Book/MapTab/PausedScreen/Map" unique_id=1987308760 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
 layout_mode = 0
 offset_left = 218.0
@@ -286,7 +760,7 @@ offset_top = 49.0
 offset_right = 250.0
 offset_bottom = 61.0
 
-[node name="MapNode15" parent="PausedScreen/Map" unique_id=1162787591 instance=ExtResource("2_i6ckp")]
+[node name="MapNode15" parent="Book/MapTab/PausedScreen/Map" unique_id=1162787591 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 0
@@ -295,7 +769,7 @@ offset_top = 21.0
 offset_right = 249.0
 offset_bottom = 47.0
 
-[node name="MapNode16" parent="PausedScreen/Map" unique_id=2100070256 instance=ExtResource("2_i6ckp")]
+[node name="MapNode16" parent="Book/MapTab/PausedScreen/Map" unique_id=2100070256 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
 layout_mode = 0
 offset_left = 252.0
@@ -303,7 +777,7 @@ offset_top = 22.0
 offset_right = 275.0
 offset_bottom = 41.0
 
-[node name="MapNode17" parent="PausedScreen/Map" unique_id=1010392253 instance=ExtResource("2_i6ckp")]
+[node name="MapNode17" parent="Book/MapTab/PausedScreen/Map" unique_id=1010392253 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8901961, 0.88235295, 0.2, 1)
 layout_mode = 0
 offset_left = 255.0
@@ -311,7 +785,7 @@ offset_top = 48.0
 offset_right = 274.0
 offset_bottom = 60.0
 
-[node name="MapNode18" parent="PausedScreen/Map" unique_id=1594429654 instance=ExtResource("2_i6ckp")]
+[node name="MapNode18" parent="Book/MapTab/PausedScreen/Map" unique_id=1594429654 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.9490196, 0.54901963, 0.101960786, 1)
 layout_mode = 0
 offset_left = 237.0
@@ -319,7 +793,7 @@ offset_top = 66.0
 offset_right = 283.0
 offset_bottom = 79.0
 
-[node name="MapNode19" parent="PausedScreen/Map" unique_id=39020870 instance=ExtResource("2_i6ckp")]
+[node name="MapNode19" parent="Book/MapTab/PausedScreen/Map" unique_id=39020870 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
 layout_mode = 0
 offset_left = 290.0
@@ -327,7 +801,7 @@ offset_top = 67.0
 offset_right = 325.0
 offset_bottom = 80.0
 
-[node name="MapNode20" parent="PausedScreen/Map" unique_id=1489784639 instance=ExtResource("2_i6ckp")]
+[node name="MapNode20" parent="Book/MapTab/PausedScreen/Map" unique_id=1489784639 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 238.0
@@ -337,7 +811,7 @@ offset_bottom = 109.0
 linked_scene = "uid://c6u75xvqxa8m3"
 entrances_bottom = Array[float]([5.6])
 
-[node name="MapNode21" parent="PausedScreen/Map" unique_id=158874263 instance=ExtResource("2_i6ckp")]
+[node name="MapNode21" parent="Book/MapTab/PausedScreen/Map" unique_id=158874263 instance=ExtResource("2_i6ckp")]
 modulate = Color(0, 0.12156863, 1, 1)
 layout_mode = 0
 offset_left = 238.0
@@ -348,7 +822,7 @@ linked_scene = "uid://b8ft0bgmghpik"
 entrances_top = Array[float]([6.4])
 entrances_left = Array[float]([5.8])
 
-[node name="MapNode22" parent="PausedScreen/Map" unique_id=1380495299 instance=ExtResource("2_i6ckp")]
+[node name="MapNode22" parent="Book/MapTab/PausedScreen/Map" unique_id=1380495299 instance=ExtResource("2_i6ckp")]
 modulate = Color(0.8784314, 0.14901961, 0.14901961, 1)
 layout_mode = 0
 offset_left = 238.0
@@ -356,7 +830,7 @@ offset_top = 127.0
 offset_right = 273.0
 offset_bottom = 143.0
 
-[node name="PlayerIndicator" type="Control" parent="PausedScreen/Map" unique_id=648942150]
+[node name="PlayerIndicator" type="Control" parent="Book/MapTab/PausedScreen/Map" unique_id=648942150]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 18.999998
@@ -365,7 +839,7 @@ offset_right = 18.999998
 offset_bottom = 88.99999
 scale = Vector2(0.8, 0.8)
 
-[node name="TextureRect" type="TextureRect" parent="PausedScreen/Map/PlayerIndicator" unique_id=755400820]
+[node name="TextureRect" type="TextureRect" parent="Book/MapTab/PausedScreen/Map/PlayerIndicator" unique_id=755400820]
 layout_mode = 0
 offset_left = -3.0
 offset_top = -3.0
@@ -373,198 +847,317 @@ offset_right = 2.0
 offset_bottom = 2.0
 texture = SubResource("GradientTexture2D_c2t11")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PausedScreen/Map/PlayerIndicator" unique_id=475670997]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Book/MapTab/PausedScreen/Map/PlayerIndicator" unique_id=475670997]
 libraries/ = SubResource("AnimationLibrary_3hkn6")
 autoplay = &"default"
 
-[node name="Label2" type="Label" parent="PausedScreen" unique_id=59825887]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 67.0
-offset_bottom = 31.0
-text = "Abilities"
-
-[node name="Label" type="Label" parent="PausedScreen" unique_id=145905241]
-layout_mode = 0
-offset_left = 136.0
-offset_top = 16.0
-offset_right = 176.0
-offset_bottom = 31.0
-text = "Map"
-
-[node name="SystemMenuButton" type="Button" parent="PausedScreen" unique_id=1284109003]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -31.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "System"
-
-[node name="AbilitiesList" type="VBoxContainer" parent="PausedScreen" unique_id=1369675558]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 35.0
-offset_right = 51.0
-offset_bottom = 182.0
-alignment = 1
-script = ExtResource("3_c2t11")
-
-[node name="AbilityDoubleJump" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1657360278]
-unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-icon = SubResource("AtlasTexture_bkefl")
-icon_alignment = 1
-
-[node name="AbilityDash" type="Button" parent="PausedScreen/AbilitiesList" unique_id=398810751]
-unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-icon = SubResource("AtlasTexture_nshl5")
-icon_alignment = 1
-
-[node name="AbilityGroundSlam" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1650969224]
-unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-icon = SubResource("AtlasTexture_15jb5")
-icon_alignment = 1
-
-[node name="AbilityMorphRoll" type="Button" parent="PausedScreen/AbilitiesList" unique_id=1867313067]
-unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-icon = SubResource("AtlasTexture_jpyw6")
-icon_alignment = 1
-
-[node name="AbilitiesDescription" type="Label" parent="PausedScreen" unique_id=2060521237]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 19.0
-offset_top = 198.0
-offset_right = 370.0
-offset_bottom = 213.0
-label_settings = SubResource("LabelSettings_qutg7")
-
-[node name="MapButton" type="Button" parent="PausedScreen" unique_id=799286197]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -208.0
-offset_top = -31.0
-offset_right = -112.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Map"
-
-[node name="System" type="Control" parent="." unique_id=711923889]
+[node name="PagesTab" type="Control" parent="Book" unique_id=707639552]
 unique_name_in_owner = true
 visible = false
-layout_mode = 3
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TitleLeft" type="Label" parent="Book/PagesTab" unique_id=2045153054]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 40.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Pages"
+
+[node name="PageGrid" type="GridContainer" parent="Book/PagesTab" unique_id=1987397392]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 68.0
+offset_right = 218.0
+offset_bottom = 158.0
+mouse_filter = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="PagesFound" type="Label" parent="Book/PagesTab" unique_id=1420615556]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 204.0
+offset_right = 40.0
+offset_bottom = 204.0
+text = "0 of 12 found"
+
+[node name="TitleRight" type="Label" parent="Book/PagesTab" unique_id=1797038252]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 38.0
+offset_right = 268.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Torn pages"
+
+[node name="PagesNote" type="Label" parent="Book/PagesTab" unique_id=1781333254]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 68.0
+offset_right = 462.0
+offset_bottom = 158.0
+text = "Pages of your story are scattered across the world. The ones you find are kept here."
+autowrap_mode = 3
+
+[node name="Castle" type="TextureRect" parent="Book/PagesTab" unique_id=402145970]
+modulate = Color(1, 1, 1, 0.54901963)
+layout_mode = 0
+offset_left = 386.0
+offset_top = 180.0
+offset_right = 386.0
+offset_bottom = 180.0
+mouse_filter = 2
+texture = ExtResource("16_ifxvv")
+
+[node name="System" type="Control" parent="Book" unique_id=711923889]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 36.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="System" unique_id=1548045270]
+[node name="VBoxContainer" type="VBoxContainer" parent="Book/System" unique_id=1548045270]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = -100.0
-offset_right = 99.0
-offset_bottom = 116.0
+offset_left = 40.0
+offset_top = 38.0
+offset_right = 236.0
+offset_bottom = 178.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="System/VBoxContainer" unique_id=1529514512]
+[node name="HBoxContainer" type="HBoxContainer" parent="Book/System/VBoxContainer" unique_id=1529514512]
+visible = false
 layout_mode = 2
 
-[node name="BackToMapButton" type="Button" parent="System/VBoxContainer/HBoxContainer" unique_id=1181731778]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="Book/System/VBoxContainer" unique_id=710817694]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Back to map"
+theme_type_variation = &"BookTitle"
+text = "Sound"
 
-[node name="BackToTitleButton" type="Button" parent="System/VBoxContainer/HBoxContainer" unique_id=575796152]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Back to title"
-
-[node name="Label" type="Label" parent="System/VBoxContainer" unique_id=710817694]
-layout_mode = 2
-text = "Audio levels"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="System/VBoxContainer" unique_id=365580970]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Book/System/VBoxContainer" unique_id=365580970]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="System/VBoxContainer/HBoxContainer2" unique_id=1195070313]
-custom_minimum_size = Vector2(60, 0)
+[node name="Label" type="Label" parent="Book/System/VBoxContainer/HBoxContainer2" unique_id=1195070313]
+custom_minimum_size = Vector2(76, 0)
 layout_mode = 2
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="System/VBoxContainer/HBoxContainer2" unique_id=753072587]
+[node name="MusicSlider" type="HSlider" parent="Book/System/VBoxContainer/HBoxContainer2" unique_id=753072587]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.5
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="System/VBoxContainer" unique_id=2133962423]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Book/System/VBoxContainer" unique_id=2133962423]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="System/VBoxContainer/HBoxContainer3" unique_id=1212926627]
-custom_minimum_size = Vector2(60, 0)
+[node name="Label" type="Label" parent="Book/System/VBoxContainer/HBoxContainer3" unique_id=1212926627]
+custom_minimum_size = Vector2(76, 0)
 layout_mode = 2
-text = "SXF"
+text = "Effects"
 
-[node name="SFXSlider" type="HSlider" parent="System/VBoxContainer/HBoxContainer3" unique_id=1347502170]
+[node name="SFXSlider" type="HSlider" parent="Book/System/VBoxContainer/HBoxContainer3" unique_id=1347502170]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.5
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="System/VBoxContainer" unique_id=909975037]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Book/System/VBoxContainer" unique_id=909975037]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="System/VBoxContainer/HBoxContainer4" unique_id=1573242090]
-custom_minimum_size = Vector2(60, 0)
+[node name="Label" type="Label" parent="Book/System/VBoxContainer/HBoxContainer4" unique_id=1573242090]
+custom_minimum_size = Vector2(76, 0)
 layout_mode = 2
-text = "UI"
+text = "Interface"
 
-[node name="UISlider" type="HSlider" parent="System/VBoxContainer/HBoxContainer4" unique_id=1254057651]
+[node name="UISlider" type="HSlider" parent="Book/System/VBoxContainer/HBoxContainer4" unique_id=1254057651]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 max_value = 1.0
 step = 0.05
 value = 0.5
+
+[node name="BackToTitleButton" type="Button" parent="Book/System" unique_id=575796152]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 300.0
+offset_top = 70.0
+offset_right = 430.0
+offset_bottom = 93.0
+size_flags_horizontal = 3
+theme_type_variation = &"BookButton"
+text = "Return to title"
+
+[node name="GamePage" type="Control" parent="Book/System" unique_id=1301052898]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TitleRight" type="Label" parent="Book/System/GamePage" unique_id=858562972]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 38.0
+offset_right = 268.0
+offset_bottom = 38.0
+theme_type_variation = &"BookTitle"
+text = "Game"
+
+[node name="ReturnNote" type="Label" parent="Book/System/GamePage" unique_id=1021965113]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 98.0
+offset_right = 462.0
+offset_bottom = 130.0
+theme_type_variation = &"BookFaint"
+text = "Progress since your last save is lost."
+autowrap_mode = 3
+
+[node name="Tabs" type="HBoxContainer" parent="Book" unique_id=148257093]
+layout_mode = 0
+offset_left = 52.0
+offset_right = 328.0
+offset_bottom = 34.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="TabMap" type="Button" parent="Book/Tabs" unique_id=633792004]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BookTab"
+theme_override_constants/h_separation = 3
+toggle_mode = true
+text = "Map"
+
+[node name="Point" type="TextureRect" parent="Book/Tabs/TabMap" unique_id=1588510625]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("10_46loh")
+
+[node name="TabAbilities" type="Button" parent="Book/Tabs" unique_id=1218920634]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BookTab"
+theme_override_constants/h_separation = 3
+toggle_mode = true
+text = "Abilities"
+
+[node name="Point" type="TextureRect" parent="Book/Tabs/TabAbilities" unique_id=628032076]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("10_46loh")
+
+[node name="TabPages" type="Button" parent="Book/Tabs" unique_id=94305467]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BookTab"
+theme_override_constants/h_separation = 3
+toggle_mode = true
+text = "Pages"
+
+[node name="Point" type="TextureRect" parent="Book/Tabs/TabPages" unique_id=1334398739]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("10_46loh")
+
+[node name="TabSystem" type="Button" parent="Book/Tabs" unique_id=470023629]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(66, 20)
+layout_mode = 2
+focus_mode = 0
+theme_type_variation = &"BookTab"
+theme_override_constants/h_separation = 3
+toggle_mode = true
+text = "System"
+
+[node name="Point" type="TextureRect" parent="Book/Tabs/TabSystem" unique_id=1379200768]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_right = 7.0
+offset_bottom = 6.0
+mouse_filter = 2
+texture = ExtResource("10_46loh")
+
+[node name="HintBar" type="Control" parent="Book" unique_id=1801713656]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="HintsLeft" type="HBoxContainer" parent="Book/HintBar" unique_id=1733149619]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 8.0
+offset_top = 243.0
+offset_right = 208.0
+offset_bottom = 259.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Hints" type="HBoxContainer" parent="Book/HintBar" unique_id=1582825892]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 262.0
+offset_top = 243.0
+offset_right = 492.0
+offset_bottom = 259.0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 2
