@@ -48,6 +48,9 @@ func can_stun() -> bool:
 func physics_update( delta : float ) -> void:
 	timer += delta
 	enemy.velocity.x = vel_x * ( 1 - timer / duration )
+	# no gravity would stop a flyer's dive speed, so a stunned flyer only gets the knockback
+	if not enemy.affected_by_gravity:
+		enemy.velocity.y = 0.0
 	if timer >= duration:
 		blackboard.can_decide = true
 	pass
