@@ -46,12 +46,12 @@ func physics_update( delta : float ) -> void:
 		if dir_to_target != 0:
 			enemy.change_dir( dir_to_target )
 	var dir : float = blackboard.dir
-	# EdgeSensor flags a drop ahead; a wall check (not is_on_wall) so standing at a wall stays blocked
+	# a wall check rather than is_on_wall, so an enemy standing at a wall stays blocked
 	var is_blocked : bool = blackboard.edge_detected or _wall_ahead( dir )
 	_set_blocked( is_blocked )
 	enemy.velocity.x = 0.0 if is_blocked else dir * speed
 
-	# a wall or ledge it cannot pass: wait a moment, then turn away instead of staring forever
+	# turn away after a while instead of staring at a wall or ledge forever
 	if is_blocked and give_up_timer <= 0:
 		blocked_time += delta
 		if blocked_time >= give_up_time:
@@ -61,15 +61,14 @@ func physics_update( delta : float ) -> void:
 	elif not is_blocked:
 		blocked_time = 0
 
-	# the idle animation does not loop: restart it so a waiting enemy never freezes on one frame
+	# idle does not loop: restart it so a waiting enemy never freezes on its last frame
 	if blocked and not enemy.animation.is_playing() and enemy.animation.has_animation( "idle" ):
 		enemy.animation.stop()
 		enemy.play_animation( "idle" )
 	pass
 
 
-# Only a wall facing the enemy counts. test_move alone also hits the corners of floor tiles
-# (normal pointing mostly up), which stopped chasers on open floor for no visible reason.
+# test_move alone also hits floor-tile corners (normal mostly up), so only a facing wall counts
 func _wall_ahead( dir : float ) -> bool:
 	var col : KinematicCollision2D = KinematicCollision2D.new()
 	if not enemy.test_move( enemy.global_transform, Vector2( dir * 2.0, 0 ), col ):

@@ -42,7 +42,7 @@ const PAN_SPEED : float = 150
 const ICONS : Texture2D = preload( "res://paused_menu/sprites/ui_icons.png" )
 const ICON_CELL : int = 12
 const PAGE_SLOT_EMPTY : Texture2D = preload( "res://paused_menu/sprites/page_slot_empty.png" )
-# level folder -> region name shown in the book
+# shortcut: region names are hard-coded per level folder, add a line when a new region folder is made (e.g. 02_scriptorium)
 const REGION_NAMES : Dictionary = {
 	"00_forest": "Blotted Wood",
 	"01_dungeon(under)": "Undercroft",
@@ -69,8 +69,10 @@ func _ready() -> void:
 	map_home_position = map.position
 	Audio.setup_button_audio( self )
 	set_up_system_menu()
+	assert( tab_buttons.size() == Tab.size(), "PauseMenu: one tab button per Tab page" )
+	assert( region_of( "res://level/01_dungeon(under)/05.tscn" ) == "Undercroft" and region_of( "" ) == "-", "PauseMenu: region_of" )
 	for i in tab_buttons.size():
-		tab_buttons[i].pressed.connect( _on_tab_pressed.bind( i ) )
+		tab_buttons[i].pressed.connect( show_tab.bind( i ) )
 	var player : Node2D = get_tree().get_first_node_in_group( "Player" )
 	if player:
 		player_position = player.global_position
@@ -137,11 +139,6 @@ func show_tab( tab : int ) -> void:
 			music_slider.grab_focus()
 		_:
 			get_viewport().gui_release_focus()
-	pass
-
-
-func _on_tab_pressed( tab : int ) -> void:
-	show_tab( tab )
 	pass
 
 
@@ -260,6 +257,7 @@ func region_of( scene : String ) -> String:
 	return "Unknown"
 
 
+# shortcut: also counts the placeholder map nodes (22, not the planned 25 rooms), count linked nodes once every room has a scene
 func map_nodes() -> Array[ MapNode ]:
 	var nodes : Array[ MapNode ] = []
 	for c in map.get_children():

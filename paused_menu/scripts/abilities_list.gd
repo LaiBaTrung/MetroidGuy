@@ -46,6 +46,7 @@ func _ready() -> void:
 		"double_jump": player.double_jump,
 		"ground_slam": player.ground_slam,
 	}
+	assert( ORDER.size() == buttons.size(), "AbilitiesList: ORDER must list every ability button" )
 	for i in ORDER.size():
 		var key : String = ORDER[ i ]
 		move_child( buttons[ key ], i )
@@ -78,7 +79,7 @@ func _set_up_row( button : Button, key : String ) -> void:
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.size = PLATE_SIZE - Vector2( 2, 2 )
 	icon.position = plate.position + Vector2( 1, 1 )
-	# keep 1:1 pixels when the icon fits the plate, shrink only the tall ground-slam icon
+	# shortcut: the 10x31 ground-slam icon is shrunk to fit the plate (looks soft), redraw it at 19x19 or smaller
 	var fits : bool = icon_texture and icon_texture.get_size().x <= icon.size.x and icon_texture.get_size().y <= icon.size.y
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_CENTERED if fits else TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -99,9 +100,4 @@ func display_abilites_description( ability_key : String ) -> void:
 		abilities_description.text = DESCRIPTIONS.get( ability_key, "" )
 	else:
 		abilities_description.text = "%s: %s" % [ NAMES[ ability_key ], LOCKED_TEXT ]
-	pass
-
-
-func clear_abilities_description() -> void:
-	abilities_description.text = ""
 	pass

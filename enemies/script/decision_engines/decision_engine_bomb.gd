@@ -27,13 +27,12 @@ func _ready() -> void:
 
 
 func decide() -> EnemyState:
-	# once the fuse is lit the bomb is committed: a hit that does not kill it still costs
-	# health but no longer stuns it, so it cannot be reset mid-fuse or survive its own
-	# explosion. Killing it defuses it. ESAttackExplode frees the enemy when the attack ends.
+	# a lit fuse cannot be reset by a stun (only a kill defuses it), so the bomb can't survive its own blast
 	if current_state == es_attack:
 		if blackboard.damage_source and blackboard.health <= 0:
 			return es_death
 		blackboard.damage_source = null
+		assert( blackboard.health > 0, "DecisionEngineBomb: a killed bomb must leave the fuse for death" )
 		return null
 
 	# got hit
