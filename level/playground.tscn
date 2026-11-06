@@ -185,7 +185,7 @@ position = Vector2(1151, 178)
 position = Vector2(1196, 178)
 
 [node name="PlayerSpawn" parent="." unique_id=450844790 instance=ExtResource("2_hbv27")]
-position = Vector2(1513, 134)
+position = Vector2(1436, 111)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=424706399]
 visible = false
@@ -237,7 +237,7 @@ collision_enabled = false
 position = Vector2(1760, 354)
 
 [node name="LivingArmor" parent="Enemy" unique_id=592058580 instance=ExtResource("18_nontg")]
-position = Vector2(1870, 354)
+position = Vector2(1341, 352)
 
 [node name="PatrolLimit" type="Node2D" parent="Enemy/LivingArmor" unique_id=1040560049]
 position = Vector2(-82, -2)
@@ -251,7 +251,8 @@ side = 2
 metadata/_custom_type_script = "uid://p7dr1cvtlxii"
 
 [node name="DemonChest" parent="Enemy" unique_id=1464549386 instance=ExtResource("20_yg4ba")]
-position = Vector2(1590, 230)
+position = Vector2(1988, 29)
+health = 100.0
 
 [node name="DoomScribe" parent="Enemy" unique_id=705931715 instance=ExtResource("21_02m5l")]
 position = Vector2(1985, 354)
